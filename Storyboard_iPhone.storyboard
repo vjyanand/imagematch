@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQP-wN-zGV">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="oJc-R6-vTc">
+            <objects>
+                <viewController id="97t-cw-FK8" customClass="RootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aae-dP-Wpb"/>
+                        <viewControllerLayoutGuide type="bottom" id="rJJ-P6-O9p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o2v-J7-R1r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byu-KV-3Hu">
+                                <rect key="frame" x="27" y="60" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="05c-GV-FHU"/>
+                                    <constraint firstAttribute="width" constant="200" id="oFY-Yz-3mA"/>
+                                </constraints>
+                                <state key="normal" title="1Button1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foX-dt-gpI">
+                                <rect key="frame" x="137" y="247" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nkI-NT-mvN"/>
+                                    <constraint firstAttribute="width" constant="200" id="tSz-JT-RdY"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eon-LX-iLu">
+                                <rect key="frame" x="137" y="345" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.186608356" green="0.1533601798" blue="0.059254886389999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2XC-cZ-6PO"/>
+                                    <constraint firstAttribute="width" constant="200" id="Cjz-WM-SHD"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd1-V9-sl4">
+                                <rect key="frame" x="137" y="156" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Xbx-mu-cBd"/>
+                                    <constraint firstAttribute="width" constant="200" id="iHG-rV-OUL"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgH-FX-hGv">
+                                <rect key="frame" x="20" y="527" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Farah" family="Farah" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="WwL-Mu-Erk" appends="YES" id="sjM-Vw-hKS"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="foX-dt-gpI" firstAttribute="top" secondItem="Zd1-V9-sl4" secondAttribute="bottom" constant="24" id="59j-Yy-fpW"/>
+                            <constraint firstAttribute="centerX" secondItem="foX-dt-gpI" secondAttribute="centerX" id="71v-7I-d9a"/>
+                            <constraint firstItem="eon-LX-iLu" firstAttribute="top" secondItem="foX-dt-gpI" secondAttribute="bottom" constant="24" id="BMM-UA-nVJ"/>
+                            <constraint firstAttribute="centerX" secondItem="eon-LX-iLu" secondAttribute="centerX" id="M9z-V5-Bch"/>
+                            <constraint firstAttribute="centerX" secondItem="Zd1-V9-sl4" secondAttribute="centerX" id="QOJ-6i-04i"/>
+                            <constraint firstItem="Zd1-V9-sl4" firstAttribute="top" secondItem="Byu-KV-3Hu" secondAttribute="bottom" constant="24" id="War-0w-LyL"/>
+                            <constraint firstAttribute="centerX" secondItem="Byu-KV-3Hu" secondAttribute="centerX" id="mNZ-w8-b2S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rg9-YS-n3W"/>
+                    <connections>
+                        <outlet property="gameButton1" destination="Byu-KV-3Hu" id="08z-i3-bPc"/>
+                        <outlet property="gameButton2" destination="foX-dt-gpI" id="DEv-NS-w7n"/>
+                        <outlet property="gameButton3" destination="eon-LX-iLu" id="E1E-6r-SP5"/>
+                        <outlet property="gameButton4" destination="Zd1-V9-sl4" id="Jno-1C-4G1"/>
+                        <outlet property="volLabel" destination="GgH-FX-hGv" id="zZ1-5C-81e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m0F-Nm-ohC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="WwL-Mu-Erk">
+                    <connections>
+                        <action selector="muteVolume:" destination="97t-cw-FK8" id="qrh-gu-oWB"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="549" y="-35"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b8L-Nh-Qub">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mQP-wN-zGV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sRd-vW-GLA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="97t-cw-FK8" kind="relationship" relationship="rootViewController" id="E87-34-hYv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-wG-VFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="23" y="-35"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
