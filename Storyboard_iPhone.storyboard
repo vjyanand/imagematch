@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byu-KV-3Hu">
-                                <rect key="frame" x="27" y="60" width="46" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byu-KV-3Hu">
+                                <rect key="frame" x="60" y="114" width="200" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -28,8 +28,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foX-dt-gpI">
-                                <rect key="frame" x="137" y="247" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foX-dt-gpI">
+                                <rect key="frame" x="60" y="274" width="200" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -40,8 +40,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eon-LX-iLu">
-                                <rect key="frame" x="137" y="345" width="46" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eon-LX-iLu">
+                                <rect key="frame" x="60" y="354" width="200" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -52,8 +52,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd1-V9-sl4">
-                                <rect key="frame" x="137" y="156" width="46" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd1-V9-sl4">
+                                <rect key="frame" x="60" y="194" width="200" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -64,8 +64,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgH-FX-hGv">
-                                <rect key="frame" x="20" y="527" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgH-FX-hGv">
+                                <rect key="frame" x="16" y="552" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -86,8 +86,8 @@
                             <constraint firstItem="GgH-FX-hGv" firstAttribute="leading" secondItem="o2v-J7-R1r" secondAttribute="leading" constant="16" id="KJW-Mi-df3"/>
                             <constraint firstAttribute="centerX" secondItem="eon-LX-iLu" secondAttribute="centerX" id="M9z-V5-Bch"/>
                             <constraint firstAttribute="centerX" secondItem="Zd1-V9-sl4" secondAttribute="centerX" id="QOJ-6i-04i"/>
+                            <constraint firstItem="Byu-KV-3Hu" firstAttribute="top" secondItem="aae-dP-Wpb" secondAttribute="bottom" constant="50" id="WJt-62-SBt"/>
                             <constraint firstItem="Zd1-V9-sl4" firstAttribute="top" secondItem="Byu-KV-3Hu" secondAttribute="bottom" constant="32" id="War-0w-LyL"/>
-                            <constraint firstItem="Byu-KV-3Hu" firstAttribute="top" secondItem="aae-dP-Wpb" secondAttribute="bottom" constant="50" id="f3p-QL-Tej"/>
                             <constraint firstAttribute="centerX" secondItem="Byu-KV-3Hu" secondAttribute="centerX" id="mNZ-w8-b2S"/>
                         </constraints>
                     </view>
