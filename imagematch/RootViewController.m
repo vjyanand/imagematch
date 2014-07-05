@@ -39,7 +39,10 @@
     } else {
         NSLog(@"LOGEDIN");
     }
-
+    float yConst = (self.view.frame.size.height - 360)/2;
+    NSLayoutConstraint *constYPos = [NSLayoutConstraint constraintWithItem:_gameButton1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1.0 constant:yConst];
+    [self.view addConstraint:constYPos];
+    
     /*int spacing = 24;
     int buttonHeight = 44;
     int currentY = (((self.view.bounds.size.height) - ((buttonHeight * 4) + (spacing * 3))) / 2) - 44;
