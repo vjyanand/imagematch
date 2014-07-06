@@ -1,10 +1,14 @@
 #import "ImgSearchViewController.h"
 #import "FlickrPhotoCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 
 @interface ImgSearchViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *items;
+@property (weak, nonatomic) IBOutlet UIView *imgHolder1;
+@property (weak, nonatomic) IBOutlet UIView *imgHolder2;
+@property (weak, nonatomic) IBOutlet UIView *imgHolder3;
+@property (weak, nonatomic) IBOutlet UIView *imgHolder4;
 
 @end
 
@@ -18,7 +22,7 @@
 
 #pragma mark - UICollectionView Datasource
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 10;// [self.items count];
+    return 1000;// [self.items count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

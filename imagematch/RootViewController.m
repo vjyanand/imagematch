@@ -1,5 +1,5 @@
 #import "RootViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 #import <AVFoundation/AVFoundation.h>
 #import "UIColor+FlatUI.h"
 
@@ -47,10 +47,7 @@
     _gameButton2.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
     _gameButton3.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
     _gameButton4.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
-    UIImageView *t = [UIImageView alloc];
-    [t setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"]
-                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-
+    
     [UIView animateWithDuration:.5f animations:^{
         [self.view layoutIfNeeded];
     }];

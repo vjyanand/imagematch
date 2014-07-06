@@ -1,14 +1,12 @@
 #import "FlickrPhotoCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+
+#import "UIImageView+WebCache.h"
 
 @implementation FlickrPhotoCell
 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
+- (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        
+    if (self){
         UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
         bgView.backgroundColor = [UIColor blueColor];
         bgView.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -19,7 +17,7 @@
 }
 
 - (void) setPhoto:(NSString *)photo {
-    [self.imageView setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"]
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/68232?s=460"]
                    placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
 
