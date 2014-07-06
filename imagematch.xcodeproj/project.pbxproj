@@ -21,10 +21,11 @@
 		42B59FBB196830F50051439F /* sndUndo.aif in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FB7196830F50051439F /* sndUndo.aif */; };
 		42B59FBE1968311B0051439F /* subtle_stripes@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FBC1968311B0051439F /* subtle_stripes@2X.png */; };
 		42B59FBF1968311B0051439F /* subtle_stripes.png in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FBD1968311B0051439F /* subtle_stripes.png */; };
-		42B59FC1196831B90051439F /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B59FC0196831B90051439F /* SDWebImage.framework */; };
 		42B59FC519683D480051439F /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B59FC419683D480051439F /* UIColor+FlatUI.m */; };
 		42B59FFC19684BD70051439F /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FFB19684BD70051439F /* FontAwesome.otf */; };
 		42B59FFE19684E3D0051439F /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */; };
+		42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0001968BC1F0051439F /* ImgSearchViewController.m */; };
+		42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0031968C4450051439F /* FlickrPhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,11 +49,14 @@
 		42B59FB7196830F50051439F /* sndUndo.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = sndUndo.aif; sourceTree = "<group>"; };
 		42B59FBC1968311B0051439F /* subtle_stripes@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subtle_stripes@2X.png"; sourceTree = "<group>"; };
 		42B59FBD1968311B0051439F /* subtle_stripes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subtle_stripes.png; sourceTree = "<group>"; };
-		42B59FC0196831B90051439F /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		42B59FC319683D480051439F /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
 		42B59FC419683D480051439F /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		42B59FFB19684BD70051439F /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		42B59FFF1968BC1F0051439F /* ImgSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgSearchViewController.h; sourceTree = "<group>"; };
+		42B5A0001968BC1F0051439F /* ImgSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgSearchViewController.m; sourceTree = "<group>"; };
+		42B5A0021968C4450051439F /* FlickrPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoCell.h; sourceTree = "<group>"; };
+		42B5A0031968C4450051439F /* FlickrPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42B59FC1196831B90051439F /* SDWebImage.framework in Frameworks */,
 				429F5B671964C48D0009DCBF /* CoreGraphics.framework in Frameworks */,
 				429F5B691964C48D0009DCBF /* UIKit.framework in Frameworks */,
 				429F5B651964C48D0009DCBF /* Foundation.framework in Frameworks */,
@@ -73,7 +76,6 @@
 		429F5B581964C48D0009DCBF = {
 			isa = PBXGroup;
 			children = (
-				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B6A1964C48D0009DCBF /* imagematch */,
 				429F5B631964C48D0009DCBF /* Frameworks */,
 				429F5B621964C48D0009DCBF /* Products */,
@@ -91,7 +93,6 @@
 		429F5B631964C48D0009DCBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42B59FC0196831B90051439F /* SDWebImage.framework */,
 				429F5B641964C48D0009DCBF /* Foundation.framework */,
 				429F5B661964C48D0009DCBF /* CoreGraphics.framework */,
 				429F5B681964C48D0009DCBF /* UIKit.framework */,
@@ -109,6 +110,11 @@
 				429F5B741964C48D0009DCBF /* AppDelegate.m */,
 				429F5B7C1964C48D0009DCBF /* RootViewController.h */,
 				429F5B7D1964C48D0009DCBF /* RootViewController.m */,
+				42B59FFF1968BC1F0051439F /* ImgSearchViewController.h */,
+				42B5A0001968BC1F0051439F /* ImgSearchViewController.m */,
+				42B5A0021968C4450051439F /* FlickrPhotoCell.h */,
+				42B5A0031968C4450051439F /* FlickrPhotoCell.m */,
+				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B7F1964C48D0009DCBF /* Images.xcassets */,
 				429F5B6B1964C48D0009DCBF /* Supporting Files */,
 			);
@@ -230,9 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B59FC519683D480051439F /* UIColor+FlatUI.m in Sources */,
+				42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */,
 				429F5B7E1964C48D0009DCBF /* RootViewController.m in Sources */,
 				429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */,
 				429F5B711964C48D0009DCBF /* main.m in Sources */,
+				42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
