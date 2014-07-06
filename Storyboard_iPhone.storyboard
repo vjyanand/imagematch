@@ -195,7 +195,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-Qx-eR0">
-                                <rect key="frame" x="20" y="366" width="160" height="284"/>
+                                <rect key="frame" x="20" y="503" width="160" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
