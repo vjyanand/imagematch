@@ -158,8 +158,8 @@
                                 <color key="barTintColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="57l-nJ-ZbO">
-                                <rect key="frame" x="0.0" y="108" width="320" height="370"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="57l-nJ-ZbO">
+                                <rect key="frame" x="0.0" y="108" width="320" height="382"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="a4F-RH-NfY">
@@ -194,19 +194,59 @@
                                     <outlet property="delegate" destination="2j1-Ya-s6m" id="Gtz-GE-QTg"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-Qx-eR0">
-                                <rect key="frame" x="20" y="503" width="160" height="147"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-Qx-eR0">
+                                <rect key="frame" x="4" y="492" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="lpp-eP-1W2"/>
+                                    <constraint firstAttribute="height" constant="74" id="nM6-er-R1Z"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYs-FR-0Q4">
+                                <rect key="frame" x="83" y="492" width="74" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="O7N-ZT-nmR"/>
+                                    <constraint firstAttribute="width" constant="74" id="mjo-KL-n18"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-yi-s6v">
+                                <rect key="frame" x="162" y="492" width="74" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="aD5-W3-YNo"/>
+                                    <constraint firstAttribute="height" constant="74" id="wcq-Jb-174"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-Es-JH2">
+                                <rect key="frame" x="241" y="492" width="74" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="KOO-XS-MFF"/>
+                                    <constraint firstAttribute="height" constant="74" id="bjl-DW-cuE"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cIV-Es-JH2" firstAttribute="leading" secondItem="ezQ-yi-s6v" secondAttribute="trailing" constant="5" id="6mI-C8-gcI"/>
                             <constraint firstAttribute="trailing" secondItem="57l-nJ-ZbO" secondAttribute="trailing" id="Fgf-db-9Oh"/>
                             <constraint firstAttribute="centerX" secondItem="Yge-iO-dcB" secondAttribute="centerX" id="Ft5-pM-NcK"/>
+                            <constraint firstItem="ezQ-yi-s6v" firstAttribute="top" secondItem="57l-nJ-ZbO" secondAttribute="bottom" constant="2" id="Ggp-PU-lZv"/>
+                            <constraint firstItem="DbY-Qx-eR0" firstAttribute="leading" secondItem="ept-uR-bQR" secondAttribute="leading" constant="4" id="OCv-hM-7m9"/>
+                            <constraint firstItem="mh0-bU-aqb" firstAttribute="top" secondItem="DbY-Qx-eR0" secondAttribute="bottom" constant="2" id="RGM-gZ-GL3"/>
                             <constraint firstItem="57l-nJ-ZbO" firstAttribute="top" secondItem="Yge-iO-dcB" secondAttribute="bottom" id="SIW-ei-CCH"/>
                             <constraint firstItem="Yge-iO-dcB" firstAttribute="top" secondItem="xp1-Ht-FDL" secondAttribute="bottom" id="Wd8-dP-Q0f"/>
+                            <constraint firstItem="hYs-FR-0Q4" firstAttribute="leading" secondItem="DbY-Qx-eR0" secondAttribute="trailing" constant="5" id="amC-zp-nFJ"/>
+                            <constraint firstItem="cIV-Es-JH2" firstAttribute="top" secondItem="57l-nJ-ZbO" secondAttribute="bottom" constant="2" id="cEV-xS-Wbg"/>
+                            <constraint firstItem="ezQ-yi-s6v" firstAttribute="leading" secondItem="hYs-FR-0Q4" secondAttribute="trailing" constant="5" id="mQ6-t4-Zej"/>
+                            <constraint firstItem="DbY-Qx-eR0" firstAttribute="top" secondItem="57l-nJ-ZbO" secondAttribute="bottom" constant="2" id="odp-CR-hzp"/>
                             <constraint firstItem="57l-nJ-ZbO" firstAttribute="leading" secondItem="ept-uR-bQR" secondAttribute="leading" id="rby-ZI-8LF"/>
+                            <constraint firstItem="hYs-FR-0Q4" firstAttribute="top" secondItem="57l-nJ-ZbO" secondAttribute="bottom" constant="2" id="spk-pV-umF"/>
                             <constraint firstItem="Yge-iO-dcB" firstAttribute="width" secondItem="ept-uR-bQR" secondAttribute="width" id="vJb-Et-wgz"/>
                         </constraints>
                     </view>
