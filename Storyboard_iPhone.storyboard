@@ -152,16 +152,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="nospace" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-iO-dcB">
+                            <searchBar contentMode="redraw" placeholder="Word to create (No space)" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-iO-dcB">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2j1-Ya-s6m" id="cVx-XV-DIS"/>
+                                </connections>
                             </searchBar>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="57l-nJ-ZbO">
                                 <rect key="frame" x="0.0" y="108" width="320" height="382"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="a4F-RH-NfY">
                                     <size key="itemSize" width="106" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -192,9 +197,10 @@
                                 <connections>
                                     <outlet property="dataSource" destination="2j1-Ya-s6m" id="Yqi-fp-DYY"/>
                                     <outlet property="delegate" destination="2j1-Ya-s6m" id="Gtz-GE-QTg"/>
+                                    <outletCollection property="gestureRecognizers" destination="9qY-Bu-ly4" appends="YES" id="v0d-78-brb"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-Qx-eR0">
+                            <view tag="301" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-Qx-eR0">
                                 <rect key="frame" x="4" y="492" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -203,7 +209,7 @@
                                     <constraint firstAttribute="height" constant="74" id="nM6-er-R1Z"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYs-FR-0Q4">
+                            <view tag="302" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYs-FR-0Q4">
                                 <rect key="frame" x="83" y="492" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -212,7 +218,7 @@
                                     <constraint firstAttribute="width" constant="74" id="mjo-KL-n18"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-yi-s6v">
+                            <view tag="303" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-yi-s6v">
                                 <rect key="frame" x="162" y="492" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -221,7 +227,7 @@
                                     <constraint firstAttribute="height" constant="74" id="wcq-Jb-174"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-Es-JH2">
+                            <view tag="304" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-Es-JH2">
                                 <rect key="frame" x="241" y="492" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -253,9 +259,19 @@
                     <navigationItem key="navigationItem" id="iGO-6Y-fRR"/>
                     <connections>
                         <outlet property="collectionView" destination="57l-nJ-ZbO" id="860-bU-AR5"/>
+                        <outlet property="imgHolder1" destination="DbY-Qx-eR0" id="kh0-Eg-qA5"/>
+                        <outlet property="imgHolder2" destination="hYs-FR-0Q4" id="6qK-pi-2d7"/>
+                        <outlet property="imgHolder3" destination="ezQ-yi-s6v" id="agX-k9-3oW"/>
+                        <outlet property="imgHolder4" destination="cIV-Es-JH2" id="hu1-GZ-0hk"/>
+                        <outlet property="searchBar" destination="Yge-iO-dcB" id="Ojd-K9-nf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3q-ey-Oq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9qY-Bu-ly4">
+                    <connections>
+                        <action selector="longPressed:" destination="2j1-Ya-s6m" id="mWS-vq-XHT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="988" y="-16"/>
         </scene>
