@@ -11,6 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIView *imgHolder4;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) UIImageView *draggingView;
+@property (nonatomic, strong) UIBarButtonItem *rightButton;
 
 @property (nonatomic, strong) NSString *searchKey;
 @property (nonatomic, assign) int curPage;
@@ -26,6 +27,17 @@
     [_searchBar becomeFirstResponder];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if ((bottomEdge + 2.0) >= scrollView.contentSize.height && [self.items count] >= 98) {
+        [self loadDataSource];
+    }
+}
+
+- (void) createQuestion {
+//    MakeQuestionViewController *makeQuestionViewController = [[MakeQuestionViewController alloc] initWithTitle:_searchKey images:_imgURLs];
+  //  [self.navigationController pushViewController:makeQuestionViewController animated:YES];
+}
 
 #pragma mark - UICollectionView Datasource
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
@@ -112,11 +124,13 @@
         
     }];
     
+    
     if([_imgURLs containsObject:@""]) {
-        self.navigationItem.rightBarButtonItem = nil;
-        
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     } else {
-        //self.navigationItem.rightBarButtonItem = _rightButton;
+        NSLog(@"%@", _imgURLs);
+        
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     }
     return YES;
 }
@@ -130,7 +144,7 @@
         [source removeFromSuperview];
     }];
     [_imgURLs replaceObjectAtIndex:(source.tag - 311) withObject:@""];
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (BOOL) hitTest:(UIView*) dragView with:(UIView*) targetView {
