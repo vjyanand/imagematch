@@ -96,20 +96,25 @@
         [_imgURLs replaceObjectAtIndex:3 withObject:[dragView sd_imageURL].absoluteString];
     }
     
-    [[dropTarget viewWithTag:(dropTarget.tag + 10)] removeFromSuperview];
-    
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
     swipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
     UIImageView *stickyImg = [[UIImageView alloc] initWithImage:dragView.image];
-    stickyImg.frame = CGRectInset(dropTarget.bounds, 2, 2);
+    stickyImg.frame = CGRectInset(dropTarget.bounds, 4, 4);
     [stickyImg setTag:(dropTarget.tag + 10)];
     [stickyImg setUserInteractionEnabled:YES];
     [stickyImg addGestureRecognizer:swipeGesture];
+    [[dropTarget viewWithTag:(dropTarget.tag + 10)] removeFromSuperview];
     [dropTarget addSubview:stickyImg];
     
-    NSLog(@"AAA");
+    [UIView animateWithDuration:0.2 animations:^{
+        stickyImg.frame = CGRectInset(dropTarget.bounds, 2, 2);
+        dropTarget.backgroundColor = [UIColor colorWithRed:0.64079483695652173 green:0.61663917799123302 blue:0.61941982327278411 alpha:1.0];
+        
+    }];
+    
     if([_imgURLs containsObject:@""]) {
         self.navigationItem.rightBarButtonItem = nil;
+        
     } else {
         //self.navigationItem.rightBarButtonItem = _rightButton;
     }
@@ -133,7 +138,7 @@
     if (intersect.size.width > 30 && intersect.size.height > 30) {
         return YES;
     } else {
-        targetView.backgroundColor = [UIColor yellowColor];
+        targetView.backgroundColor = [UIColor colorWithRed:0.64079483695652173 green:0.61663917799123302 blue:0.61941982327278411 alpha:1.0];
     }
     return NO;
 }
