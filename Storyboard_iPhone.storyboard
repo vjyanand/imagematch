@@ -152,7 +152,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Word to create (No space)" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-iO-dcB">
+                            <searchBar contentMode="redraw" text="apple" placeholder="Word to create (No space)" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-iO-dcB">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.18499490490000001" green="0.18499490490000001" blue="0.18499490490000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -257,7 +257,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iGO-6Y-fRR">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="DHH-eT-B9x"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="DHH-eT-B9x">
+                            <connections>
+                                <segue destination="mEr-20-kFa" kind="push" identifier="makequestion" id="ILb-Yr-LSk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="57l-nJ-ZbO" id="860-bU-AR5"/>
@@ -296,6 +300,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-wG-VFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="23" y="-35"/>
+        </scene>
+        <!--Make Question View Controller-->
+        <scene sceneID="lX0-lv-tQF">
+            <objects>
+                <viewController storyboardIdentifier="makeq" id="mEr-20-kFa" customClass="MakeQuestionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AZC-3o-irL"/>
+                        <viewControllerLayoutGuide type="bottom" id="pwE-wc-7GT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ctu-Rl-few">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AIp-KJ-BKJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mB-OI-k6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1460" y="-16"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

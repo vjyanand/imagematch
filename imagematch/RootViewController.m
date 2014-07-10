@@ -3,6 +3,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIColor+FlatUI.h"
 
+#import "MakeQuestionViewController.h"
+
 @interface RootViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *gameButton1;
@@ -50,6 +52,13 @@
     
     [UIView animateWithDuration:.5f animations:^{
         [self.view layoutIfNeeded];
+        MakeQuestionViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"makeq"];
+        [vc setTitle:@"appleapple" andImages:@[
+        @"http://i.istockimg.com/file_thumbview_approve/19059160/3/stock-photo-19059160-stages-of-eating-red-apple.jpg",
+        @"http://i.istockimg.com/file_thumbview_approve/19175962/3/stock-photo-19175962-sliced-green-apple.jpg",
+        @"http://i.istockimg.com/file_thumbview_approve/19987310/3/stock-photo-19987310-apple-orange.jpg",
+        @"http://i.istockimg.com/file_thumbview_approve/19445504/3/stock-photo-19445504-sliced-red-apple-and-leaf.jpg"]];
+        [self.navigationController pushViewController:vc animated:NO];
     }];
     
     _volLabel.font = [UIFont fontWithName:@"FontAwesome" size:30];

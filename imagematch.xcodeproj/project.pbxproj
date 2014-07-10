@@ -42,6 +42,8 @@
 		42B59FFE19684E3D0051439F /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */; };
 		42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0001968BC1F0051439F /* ImgSearchViewController.m */; };
 		42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0031968C4450051439F /* FlickrPhotoCell.m */; };
+		42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB202C196E280B00DA552F /* MakeQuestionViewController.m */; };
+		42CB2030196EA87400DA552F /* HUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB202F196EA87400DA552F /* HUDView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,10 @@
 		42B5A0001968BC1F0051439F /* ImgSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgSearchViewController.m; sourceTree = "<group>"; };
 		42B5A0021968C4450051439F /* FlickrPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoCell.h; sourceTree = "<group>"; };
 		42B5A0031968C4450051439F /* FlickrPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoCell.m; sourceTree = "<group>"; };
+		42CB202B196E280B00DA552F /* MakeQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeQuestionViewController.h; sourceTree = "<group>"; };
+		42CB202C196E280B00DA552F /* MakeQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeQuestionViewController.m; sourceTree = "<group>"; };
+		42CB202E196EA87400DA552F /* HUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDView.h; sourceTree = "<group>"; };
+		42CB202F196EA87400DA552F /* HUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,8 @@
 				42B5A0001968BC1F0051439F /* ImgSearchViewController.m */,
 				42B5A0021968C4450051439F /* FlickrPhotoCell.h */,
 				42B5A0031968C4450051439F /* FlickrPhotoCell.m */,
+				42CB202B196E280B00DA552F /* MakeQuestionViewController.h */,
+				42CB202C196E280B00DA552F /* MakeQuestionViewController.m */,
 				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B7F1964C48D0009DCBF /* Images.xcassets */,
 				429F5B6B1964C48D0009DCBF /* Supporting Files */,
@@ -224,6 +232,8 @@
 		42B59FB2196830D70051439F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				42CB202E196EA87400DA552F /* HUDView.h */,
+				42CB202F196EA87400DA552F /* HUDView.m */,
 				4242FECC19695DF100245ABC /* SDWebImage */,
 				42B59FC219683D3D0051439F /* FlatKit */,
 			);
@@ -339,9 +349,11 @@
 				4242FEFA19695DF100245ABC /* UIImage+WebP.m in Sources */,
 				4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */,
 				4242FEF219695DF100245ABC /* SDWebImageDecoder.m in Sources */,
+				42CB2030196EA87400DA552F /* HUDView.m in Sources */,
 				429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */,
 				4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */,
 				4242FEF119695DF100245ABC /* SDWebImageCompat.m in Sources */,
+				42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */,
 				429F5B711964C48D0009DCBF /* main.m in Sources */,
 				42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */,
 				4242FEF919695DF100245ABC /* UIImage+MultiFormat.m in Sources */,
