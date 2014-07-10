@@ -1,6 +1,7 @@
 #import "MakeQuestionViewController.h"
 #import "UIImageView+WebCache.h"
-#import "HUDView.h"
+#import "MBHUDView.h"
+#import "MBSpinningCircle.h"
 
 @interface MakeQuestionViewController ()
 
@@ -161,7 +162,6 @@
 }
 
 -(void) bChallenge:(id)sender {
-    [[HUDView alloc] initWithFrame:self.view.frame];
     
     [MBHUDView hudWithBody:@"Wait." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.0 show:YES];
     
@@ -189,7 +189,7 @@
                 MBAlertView *alert = [MBAlertView alertWithBody:@"Game created.Do you want to challenge now?" cancelTitle:@"Cancel" cancelBlock:^{[self.navigationController popToRootViewControllerAnimated:YES];}];
                 [alert setBackgroundAlpha:0.8];
                 [alert addButtonWithText:@"Challenge" type:MBAlertViewItemTypePositive block:^{
-                    [self showGKTurnBasedMatchmakerViewController];
+                    //[self showGKTurnBasedMatchmakerViewController];
                 }];
                 [alert addToDisplayQueue];
             }

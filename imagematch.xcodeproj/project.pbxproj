@@ -43,7 +43,21 @@
 		42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0001968BC1F0051439F /* ImgSearchViewController.m */; };
 		42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B5A0031968C4450051439F /* FlickrPhotoCell.m */; };
 		42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB202C196E280B00DA552F /* MakeQuestionViewController.m */; };
-		42CB2030196EA87400DA552F /* HUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB202F196EA87400DA552F /* HUDView.m */; };
+		42CB2057196EB14200DA552F /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2034196EB14200DA552F /* NSString+Trim.m */; };
+		42CB2058196EB14200DA552F /* UIFont+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2036196EB14200DA552F /* UIFont+Alert.m */; };
+		42CB2059196EB14200DA552F /* UIView+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2038196EB14200DA552F /* UIView+Alert.m */; };
+		42CB205A196EB14200DA552F /* MBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB203B196EB14200DA552F /* MBAlertView.m */; };
+		42CB205B196EB14200DA552F /* MBAlertViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB203D196EB14200DA552F /* MBAlertViewButton.m */; };
+		42CB205C196EB14200DA552F /* MBAlertViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB203F196EB14200DA552F /* MBAlertViewItem.m */; };
+		42CB205D196EB14200DA552F /* AutoLayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2043196EB14200DA552F /* AutoLayoutHelpers.m */; };
+		42CB205E196EB14200DA552F /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2045196EB14200DA552F /* UIView+Autolayout.m */; };
+		42CB205F196EB14200DA552F /* MBFlatAlertAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2047196EB14200DA552F /* MBFlatAlertAbstract.m */; };
+		42CB2060196EB14200DA552F /* MBFlatAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2049196EB14200DA552F /* MBFlatAlertButton.m */; };
+		42CB2061196EB14200DA552F /* MBFlatAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB204B196EB14200DA552F /* MBFlatAlertView.m */; };
+		42CB2062196EB14200DA552F /* MBCheckMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB204E196EB14200DA552F /* MBCheckMarkView.m */; };
+		42CB2063196EB14200DA552F /* MBHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2050196EB14200DA552F /* MBHUDView.m */; };
+		42CB2064196EB14200DA552F /* MBSpinningCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2052196EB14200DA552F /* MBSpinningCircle.m */; };
+		42CB2065196EB14200DA552F /* MBAlertAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CB2054196EB14200DA552F /* MBAlertAbstract.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,8 +124,37 @@
 		42B5A0031968C4450051439F /* FlickrPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoCell.m; sourceTree = "<group>"; };
 		42CB202B196E280B00DA552F /* MakeQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeQuestionViewController.h; sourceTree = "<group>"; };
 		42CB202C196E280B00DA552F /* MakeQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeQuestionViewController.m; sourceTree = "<group>"; };
-		42CB202E196EA87400DA552F /* HUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDView.h; sourceTree = "<group>"; };
-		42CB202F196EA87400DA552F /* HUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDView.m; sourceTree = "<group>"; };
+		42CB2033196EB14200DA552F /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
+		42CB2034196EB14200DA552F /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
+		42CB2035196EB14200DA552F /* UIFont+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Alert.h"; sourceTree = "<group>"; };
+		42CB2036196EB14200DA552F /* UIFont+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Alert.m"; sourceTree = "<group>"; };
+		42CB2037196EB14200DA552F /* UIView+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Alert.h"; sourceTree = "<group>"; };
+		42CB2038196EB14200DA552F /* UIView+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Alert.m"; sourceTree = "<group>"; };
+		42CB203A196EB14200DA552F /* MBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertView.h; sourceTree = "<group>"; };
+		42CB203B196EB14200DA552F /* MBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertView.m; sourceTree = "<group>"; };
+		42CB203C196EB14200DA552F /* MBAlertViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewButton.h; sourceTree = "<group>"; };
+		42CB203D196EB14200DA552F /* MBAlertViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertViewButton.m; sourceTree = "<group>"; };
+		42CB203E196EB14200DA552F /* MBAlertViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewItem.h; sourceTree = "<group>"; };
+		42CB203F196EB14200DA552F /* MBAlertViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertViewItem.m; sourceTree = "<group>"; };
+		42CB2042196EB14200DA552F /* AutoLayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutHelpers.h; sourceTree = "<group>"; };
+		42CB2043196EB14200DA552F /* AutoLayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutHelpers.m; sourceTree = "<group>"; };
+		42CB2044196EB14200DA552F /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
+		42CB2045196EB14200DA552F /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
+		42CB2046196EB14200DA552F /* MBFlatAlertAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFlatAlertAbstract.h; sourceTree = "<group>"; };
+		42CB2047196EB14200DA552F /* MBFlatAlertAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFlatAlertAbstract.m; sourceTree = "<group>"; };
+		42CB2048196EB14200DA552F /* MBFlatAlertButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFlatAlertButton.h; sourceTree = "<group>"; };
+		42CB2049196EB14200DA552F /* MBFlatAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFlatAlertButton.m; sourceTree = "<group>"; };
+		42CB204A196EB14200DA552F /* MBFlatAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFlatAlertView.h; sourceTree = "<group>"; };
+		42CB204B196EB14200DA552F /* MBFlatAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFlatAlertView.m; sourceTree = "<group>"; };
+		42CB204D196EB14200DA552F /* MBCheckMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCheckMarkView.h; sourceTree = "<group>"; };
+		42CB204E196EB14200DA552F /* MBCheckMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCheckMarkView.m; sourceTree = "<group>"; };
+		42CB204F196EB14200DA552F /* MBHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBHUDView.h; sourceTree = "<group>"; };
+		42CB2050196EB14200DA552F /* MBHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBHUDView.m; sourceTree = "<group>"; };
+		42CB2051196EB14200DA552F /* MBSpinningCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSpinningCircle.h; sourceTree = "<group>"; };
+		42CB2052196EB14200DA552F /* MBSpinningCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSpinningCircle.m; sourceTree = "<group>"; };
+		42CB2053196EB14200DA552F /* MBAlertAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertAbstract.h; sourceTree = "<group>"; };
+		42CB2054196EB14200DA552F /* MBAlertAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertAbstract.m; sourceTree = "<group>"; };
+		42CB2056196EB14200DA552F /* MBAlertViewSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewSubclass.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,8 +275,7 @@
 		42B59FB2196830D70051439F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				42CB202E196EA87400DA552F /* HUDView.h */,
-				42CB202F196EA87400DA552F /* HUDView.m */,
+				42CB2031196EB14200DA552F /* MBAlertView */,
 				4242FECC19695DF100245ABC /* SDWebImage */,
 				42B59FC219683D3D0051439F /* FlatKit */,
 			);
@@ -261,6 +303,92 @@
 				42B59FC419683D480051439F /* UIColor+FlatUI.m */,
 			);
 			name = FlatKit;
+			sourceTree = "<group>";
+		};
+		42CB2031196EB14200DA552F /* MBAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				42CB2032196EB14200DA552F /* Categories */,
+				42CB2039196EB14200DA552F /* Classic */,
+				42CB2040196EB14200DA552F /* Flat */,
+				42CB204C196EB14200DA552F /* HUD */,
+				42CB2053196EB14200DA552F /* MBAlertAbstract.h */,
+				42CB2054196EB14200DA552F /* MBAlertAbstract.m */,
+				42CB2055196EB14200DA552F /* Protected */,
+			);
+			path = MBAlertView;
+			sourceTree = "<group>";
+		};
+		42CB2032196EB14200DA552F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				42CB2033196EB14200DA552F /* NSString+Trim.h */,
+				42CB2034196EB14200DA552F /* NSString+Trim.m */,
+				42CB2035196EB14200DA552F /* UIFont+Alert.h */,
+				42CB2036196EB14200DA552F /* UIFont+Alert.m */,
+				42CB2037196EB14200DA552F /* UIView+Alert.h */,
+				42CB2038196EB14200DA552F /* UIView+Alert.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		42CB2039196EB14200DA552F /* Classic */ = {
+			isa = PBXGroup;
+			children = (
+				42CB203A196EB14200DA552F /* MBAlertView.h */,
+				42CB203B196EB14200DA552F /* MBAlertView.m */,
+				42CB203C196EB14200DA552F /* MBAlertViewButton.h */,
+				42CB203D196EB14200DA552F /* MBAlertViewButton.m */,
+				42CB203E196EB14200DA552F /* MBAlertViewItem.h */,
+				42CB203F196EB14200DA552F /* MBAlertViewItem.m */,
+			);
+			path = Classic;
+			sourceTree = "<group>";
+		};
+		42CB2040196EB14200DA552F /* Flat */ = {
+			isa = PBXGroup;
+			children = (
+				42CB2041196EB14200DA552F /* AutolayoutHelpers */,
+				42CB2046196EB14200DA552F /* MBFlatAlertAbstract.h */,
+				42CB2047196EB14200DA552F /* MBFlatAlertAbstract.m */,
+				42CB2048196EB14200DA552F /* MBFlatAlertButton.h */,
+				42CB2049196EB14200DA552F /* MBFlatAlertButton.m */,
+				42CB204A196EB14200DA552F /* MBFlatAlertView.h */,
+				42CB204B196EB14200DA552F /* MBFlatAlertView.m */,
+			);
+			path = Flat;
+			sourceTree = "<group>";
+		};
+		42CB2041196EB14200DA552F /* AutolayoutHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				42CB2042196EB14200DA552F /* AutoLayoutHelpers.h */,
+				42CB2043196EB14200DA552F /* AutoLayoutHelpers.m */,
+				42CB2044196EB14200DA552F /* UIView+Autolayout.h */,
+				42CB2045196EB14200DA552F /* UIView+Autolayout.m */,
+			);
+			path = AutolayoutHelpers;
+			sourceTree = "<group>";
+		};
+		42CB204C196EB14200DA552F /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				42CB204D196EB14200DA552F /* MBCheckMarkView.h */,
+				42CB204E196EB14200DA552F /* MBCheckMarkView.m */,
+				42CB204F196EB14200DA552F /* MBHUDView.h */,
+				42CB2050196EB14200DA552F /* MBHUDView.m */,
+				42CB2051196EB14200DA552F /* MBSpinningCircle.h */,
+				42CB2052196EB14200DA552F /* MBSpinningCircle.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		42CB2055196EB14200DA552F /* Protected */ = {
+			isa = PBXGroup;
+			children = (
+				42CB2056196EB14200DA552F /* MBAlertViewSubclass.h */,
+			);
+			path = Protected;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,29 +464,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B59FC519683D480051439F /* UIColor+FlatUI.m in Sources */,
+				42CB2057196EB14200DA552F /* NSString+Trim.m in Sources */,
 				4242FEF519695DF100245ABC /* SDWebImageManager.m in Sources */,
 				4242FEF019695DF100245ABC /* SDImageCache.m in Sources */,
 				4242FEF419695DF100245ABC /* SDWebImageDownloaderOperation.m in Sources */,
 				4242FEFD19695DF100245ABC /* UIView+WebCacheOperation.m in Sources */,
 				42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */,
 				4242FEF719695DF100245ABC /* UIButton+WebCache.m in Sources */,
+				42CB205E196EB14200DA552F /* UIView+Autolayout.m in Sources */,
 				4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */,
 				4242FEF619695DF100245ABC /* SDWebImagePrefetcher.m in Sources */,
 				4242FEF319695DF100245ABC /* SDWebImageDownloader.m in Sources */,
 				429F5B7E1964C48D0009DCBF /* RootViewController.m in Sources */,
+				42CB2061196EB14200DA552F /* MBFlatAlertView.m in Sources */,
+				42CB205A196EB14200DA552F /* MBAlertView.m in Sources */,
 				4242FEFA19695DF100245ABC /* UIImage+WebP.m in Sources */,
+				42CB2064196EB14200DA552F /* MBSpinningCircle.m in Sources */,
 				4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */,
+				42CB2062196EB14200DA552F /* MBCheckMarkView.m in Sources */,
 				4242FEF219695DF100245ABC /* SDWebImageDecoder.m in Sources */,
-				42CB2030196EA87400DA552F /* HUDView.m in Sources */,
+				42CB205B196EB14200DA552F /* MBAlertViewButton.m in Sources */,
+				42CB205F196EB14200DA552F /* MBFlatAlertAbstract.m in Sources */,
+				42CB2063196EB14200DA552F /* MBHUDView.m in Sources */,
 				429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */,
 				4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */,
 				4242FEF119695DF100245ABC /* SDWebImageCompat.m in Sources */,
+				42CB2058196EB14200DA552F /* UIFont+Alert.m in Sources */,
 				42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */,
 				429F5B711964C48D0009DCBF /* main.m in Sources */,
+				42CB2065196EB14200DA552F /* MBAlertAbstract.m in Sources */,
+				42CB2059196EB14200DA552F /* UIView+Alert.m in Sources */,
 				42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */,
 				4242FEF919695DF100245ABC /* UIImage+MultiFormat.m in Sources */,
+				42CB205D196EB14200DA552F /* AutoLayoutHelpers.m in Sources */,
 				4242FEFB19695DF100245ABC /* UIImageView+HighlightedWebCache.m in Sources */,
+				42CB205C196EB14200DA552F /* MBAlertViewItem.m in Sources */,
 				4242FEF819695DF100245ABC /* UIImage+GIF.m in Sources */,
+				42CB2060196EB14200DA552F /* MBFlatAlertButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
