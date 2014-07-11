@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4204A2C5196FFB22000D94CB /* SolveChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */; };
+		4204A2C8196FFD24000D94CB /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2C7196FFD24000D94CB /* Question.m */; };
+		4204A2CB196FFD75000D94CB /* GameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2CA196FFD75000D94CB /* GameScore.m */; };
 		4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */; };
 		4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED019695DF100245ABC /* NSData+ImageContentType.m */; };
 		4242FEF019695DF100245ABC /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED219695DF100245ABC /* SDImageCache.m */; };
@@ -64,6 +66,10 @@
 /* Begin PBXFileReference section */
 		4204A2C3196FFB22000D94CB /* SolveChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolveChallengeViewController.h; sourceTree = "<group>"; };
 		4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolveChallengeViewController.m; sourceTree = "<group>"; };
+		4204A2C6196FFD24000D94CB /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		4204A2C7196FFD24000D94CB /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		4204A2C9196FFD75000D94CB /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
+		4204A2CA196FFD75000D94CB /* GameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScore.m; sourceTree = "<group>"; };
 		4242FECD19695DF100245ABC /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		4242FECF19695DF100245ABC /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -253,6 +259,10 @@
 				429F5B7D1964C48D0009DCBF /* RootViewController.m */,
 				42B59FFF1968BC1F0051439F /* ImgSearchViewController.h */,
 				42B5A0001968BC1F0051439F /* ImgSearchViewController.m */,
+				4204A2C6196FFD24000D94CB /* Question.h */,
+				4204A2C7196FFD24000D94CB /* Question.m */,
+				4204A2C9196FFD75000D94CB /* GameScore.h */,
+				4204A2CA196FFD75000D94CB /* GameScore.m */,
 				42B5A0021968C4450051439F /* FlickrPhotoCell.h */,
 				42B5A0031968C4450051439F /* FlickrPhotoCell.m */,
 				42CB202B196E280B00DA552F /* MakeQuestionViewController.h */,
@@ -486,6 +496,7 @@
 				42CB205A196EB14200DA552F /* MBAlertView.m in Sources */,
 				4242FEFA19695DF100245ABC /* UIImage+WebP.m in Sources */,
 				42CB2064196EB14200DA552F /* MBSpinningCircle.m in Sources */,
+				4204A2CB196FFD75000D94CB /* GameScore.m in Sources */,
 				4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */,
 				42CB2062196EB14200DA552F /* MBCheckMarkView.m in Sources */,
 				4242FEF219695DF100245ABC /* SDWebImageDecoder.m in Sources */,
@@ -505,6 +516,7 @@
 				42CB205D196EB14200DA552F /* AutoLayoutHelpers.m in Sources */,
 				4242FEFB19695DF100245ABC /* UIImageView+HighlightedWebCache.m in Sources */,
 				42CB205C196EB14200DA552F /* MBAlertViewItem.m in Sources */,
+				4204A2C8196FFD24000D94CB /* Question.m in Sources */,
 				4242FEF819695DF100245ABC /* UIImage+GIF.m in Sources */,
 				42CB2060196EB14200DA552F /* MBFlatAlertButton.m in Sources */,
 			);
