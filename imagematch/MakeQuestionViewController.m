@@ -102,7 +102,7 @@
         boxSize = 35;
     }
     boxSpace = 10;
-    int cols = [chars count] / 2 ;
+    int cols = (int)[chars count] / 2 ;
     width = (boxSize * cols) + (boxSpace * (cols -1));
     startPoint = (screenWidth - width) / 2;
     for (int i=0; i < cols; i++) {
@@ -168,12 +168,12 @@
     NSString *post =[NSString stringWithFormat:@"i=%@&i=%@&i=%@&i=%@&t=%@&s=%@&u=%@",[_imgURLs objectAtIndex:0], [_imgURLs objectAtIndex:1], [_imgURLs objectAtIndex:2], [_imgURLs objectAtIndex:3], _searchKey, _scramble, [GKLocalPlayer localPlayer].playerID];
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    //NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://iavian.net/im/create"] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0];
     [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%lu", [postData length]] forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
@@ -189,11 +189,58 @@
                 MBAlertView *alert = [MBAlertView alertWithBody:@"Game created.Do you want to challenge now?" cancelTitle:@"Cancel" cancelBlock:^{[self.navigationController popToRootViewControllerAnimated:YES];}];
                 [alert setBackgroundAlpha:0.8];
                 [alert addButtonWithText:@"Challenge" type:MBAlertViewItemTypePositive block:^{
-                    //[self showGKTurnBasedMatchmakerViewController];
+                    [self showGKTurnBasedMatchmakerViewController];
                 }];
                 [alert addToDisplayQueue];
             }
         });
+    }];
+}
+
+- (void)showGKTurnBasedMatchmakerViewController {
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
+    request.inviteMessage = [NSString stringWithFormat:@"New challenge:%@ from %@", _scramble, [GKLocalPlayer localPlayer].displayName];
+    GKTurnBasedMatchmakerViewController *mmvc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    mmvc.turnBasedMatchmakerDelegate = self;
+    mmvc.showExistingMatches = NO;
+    [self presentViewController:mmvc animated:YES completion:nil];
+}
+
+- (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
+    
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString *post =[NSString stringWithFormat:@"id=%d",self.qID];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    GKTurnBasedParticipant *nextPlayer;
+    if (match.currentParticipant == [match.participants objectAtIndex:0]) {
+        nextPlayer = [[match participants] lastObject];
+    } else {
+        nextPlayer = [[match participants] objectAtIndex:0];
+    }
+    match.message = [NSString stringWithFormat:@"New challenge:%@ from %@", _scramble, [GKLocalPlayer localPlayer].displayName];
+    [match endTurnWithNextParticipants:@[nextPlayer] turnTimeout:600 matchData:postData completionHandler:^(NSError *error) {
+        if(error == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBHUDView *hudView = [MBHUDView hudWithBody:@"Challege created" type:MBAlertViewHUDTypeCheckmark hidesAfter:2.0 show:YES];
+                hudView.uponDismissalBlock = ^ {
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                };
+            });
+        }
     }];
 }
 

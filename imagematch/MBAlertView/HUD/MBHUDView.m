@@ -82,7 +82,7 @@
 - (UIFont*)bodyFont {
     if(_bodyFont)
         return _bodyFont;
-    float size = 0;
+    CGFloat size = 0;
     [self.bodyText sizeWithFont:[UIFont boldSystemFontOfSize:26] minFontSize:6 actualFontSize:&size forWidth:self.contentView.bounds.size.width / 1.3 lineBreakMode:NSLineBreakByTruncatingTail];
     _bodyFont = [UIFont boldSystemFontOfSize:size];
     return _bodyFont;

@@ -51,7 +51,7 @@
     [[self colorForButtonStyle] setFill];   
     [path fill];
     
-    float actualSize = 0;
+    CGFloat actualSize = 0;
     [_title sizeWithFont:kButtonFont minFontSize:8 actualFontSize:&actualSize forWidth:self.bounds.size.width - 20 lineBreakMode:NSLineBreakByClipping];
     CGSize otherSize = [_title sizeWithFont:[UIFont boldSystemFontOfSize:actualSize]];
     

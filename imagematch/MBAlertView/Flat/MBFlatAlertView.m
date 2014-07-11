@@ -77,8 +77,6 @@
      ]];
 }
 
-static const CGFloat buttonHeight = 40;
-
 - (void)configureConstraints
 {
     [self.view addConstraints:@[
