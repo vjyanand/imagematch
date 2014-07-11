@@ -171,6 +171,210 @@
     [self reload];
 }
 
+
+-(void) showOptions:(UIGestureRecognizer*)sender {
+    
+    UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    UIView *modalView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Background tap view
+    UIView *backgroundView = [[UIView alloc] initWithFrame:modalView.bounds];
+    backgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    [backgroundView setTag:404];
+    [modalView addSubview:backgroundView];
+    
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(mainWindow.center.x * 2, mainWindow.center.y - 120, 220, 240)];
+    contentView.backgroundColor = [UIColor silverColor];
+    contentView.layer.cornerRadius = 4.0;
+    contentView.layer.shadowColor = [UIColor blackColor].CGColor;
+    contentView.layer.shadowOffset = CGSizeMake(0, 0);
+    contentView.layer.shadowRadius = 5.0;
+    contentView.layer.shadowOpacity = 1;
+    
+    int ySpacing = (contentView.bounds.size.height - 136) / 3;
+    
+    UIButton *revealButton = [[UIButton alloc] initWithFrame:CGRectMake((contentView.bounds.size.width - 172)/2, ySpacing, 172, 48)];
+    revealButton.backgroundColor = [UIColor colorFromHexCode:@"#F75D59"];
+    [revealButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [revealButton setTitle:@" Reveal letter" forState:UIControlStateNormal];
+    [revealButton.titleLabel setFont:[UIFont fontWithName:@"GeezaPro-Bold" size:18.0]];
+    [revealButton setImage:[UIImage imageNamed:@"reveal_new"] forState:UIControlStateNormal];
+    UIBezierPath *maskPathTop = [UIBezierPath bezierPathWithRoundedRect:revealButton.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10.0, 10.0)];
+    CAShapeLayer *maskLayerTop = [CAShapeLayer layer];
+    maskLayerTop.frame = revealButton.bounds;
+    maskLayerTop.path = maskPathTop.CGPath;
+    revealButton.layer.mask = maskLayerTop;
+    
+    [contentView addSubview:revealButton];
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(revealButton.frame.origin.x, revealButton.frame.origin.y + revealButton.frame.size.height, revealButton.frame.size.width, 20)];
+    bottomView.backgroundColor = [UIColor turquoiseColor];
+    
+    UIImageView *coinImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin84"]];
+    coinImage.frame = CGRectMake((bottomView.bounds.size.width/2) - 20, 0, 20, 20);
+    UILabel *coinLabel = [[UILabel alloc] initWithFrame:CGRectMake((bottomView.bounds.size.width/2) + 4, 0, 40, 20)];
+    coinLabel.backgroundColor = [UIColor clearColor];
+    coinLabel.text = @"20";
+    [bottomView addSubview:coinLabel];
+    [bottomView addSubview:coinImage];
+    
+    UIBezierPath *maskPathBottom = [UIBezierPath bezierPathWithRoundedRect:bottomView.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10.0, 10.0)];
+    CAShapeLayer *maskLayerBottom = [CAShapeLayer layer];
+    maskLayerBottom.frame = bottomView.bounds;
+    maskLayerBottom.path = maskPathBottom.CGPath;
+    bottomView.layer.mask = maskLayerBottom;
+    [contentView addSubview:bottomView];
+    
+    UIButton *hideButton = [[UIButton alloc] initWithFrame:CGRectMake((contentView.bounds.size.width - 172)/2, bottomView.frame.size.height + bottomView.frame.origin.y + ySpacing, 172, 48)];
+    hideButton.backgroundColor = [UIColor colorFromHexCode:@"#F75D59"];
+    [hideButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [hideButton setTitle:@" Remove letter" forState:UIControlStateNormal];
+    [hideButton.titleLabel setFont:[UIFont fontWithName:@"GeezaPro-Bold" size:18.0]];
+    [hideButton setImage:[UIImage imageNamed:@"remove_new"] forState:UIControlStateNormal];
+    CAShapeLayer *maskLayerTop2 = [CAShapeLayer layer];
+    maskLayerTop2.frame = hideButton.bounds;
+    maskLayerTop2.path = maskPathTop.CGPath;
+    hideButton.layer.mask = maskLayerTop2;
+    [contentView addSubview:hideButton];
+    
+    UIView *bottomView2 = [[UIView alloc] initWithFrame:CGRectMake(hideButton.frame.origin.x, hideButton.frame.origin.y + hideButton.frame.size.height, hideButton.frame.size.width, 20)];
+    bottomView2.backgroundColor = [UIColor turquoiseColor];
+    
+    UIImageView *coinImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin84"]];
+    coinImage2.frame = CGRectMake((bottomView2.bounds.size.width/2) - 20, 0, 20, 20);
+    UILabel *coinLabel2 = [[UILabel alloc] initWithFrame:CGRectMake((bottomView2.bounds.size.width/2) + 4, 0, 40, 20)];
+    coinLabel2.backgroundColor = [UIColor clearColor];
+    coinLabel2.text = @"20";
+    
+    [bottomView2 addSubview:coinLabel2];
+    [bottomView2 addSubview:coinImage2];
+    
+    CAShapeLayer *maskLayerBottom2 = [CAShapeLayer layer];
+    maskLayerBottom2.frame = bottomView2.bounds;
+    maskLayerBottom2.path = maskPathBottom.CGPath;
+    bottomView2.layer.mask = maskLayerBottom2;
+    [contentView addSubview:bottomView2];
+    
+    [hideButton addTarget:self action:@selector(hideLetter:) forControlEvents:UIControlEventTouchUpInside];
+    [revealButton addTarget:self action:@selector(revealLetter:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:hideButton];
+    [modalView addSubview:contentView];
+    [mainWindow addSubview:modalView];
+    
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeShareView:)];
+    gr.numberOfTapsRequired = 1;
+    [backgroundView addGestureRecognizer:gr];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [contentView setCenter:modalView.center];
+    }];
+}
+
+- (void)closeShareView:(UIGestureRecognizer*)sender {
+    if(sender.view.tag == 404){
+        UIView *contentView = [sender.view.superview.subviews lastObject];
+        CGRect cvRect = contentView.frame;
+        cvRect.origin.x = 0 - cvRect.size.width;
+        [UIView animateWithDuration:0.4 animations:^{sender.view.alpha = 0.0; contentView.frame = cvRect;} completion:^(BOOL finished){ [sender.view.superview removeFromSuperview];}];
+    } else {
+        [sender.view removeFromSuperview];
+    }
+}
+
+-(void) revealLetter:(UIView*)sender {
+    UIView *contentView = [sender.superview.superview.subviews objectAtIndex:1];
+    CGRect cvRect = contentView.frame;
+    cvRect.origin.x = 0 - cvRect.size.width;
+    [[GameScore sharedInstance] updateGameCoin:-5];
+    _titleScoreText.text = [NSString stringWithFormat:@"%lld", [GameScore sharedInstance].coin];
+    [UIView animateWithDuration:0.2 animations:^{sender.superview.alpha = 0.0; contentView.frame = cvRect;} completion:^(BOOL finished){ [contentView.superview removeFromSuperview];
+        
+        //Push All Down
+        NSString *searchKeyCopy = [NSString stringWithString:_question.solution];
+        
+        for (int i = 0; i < [_bDataDict count]; i++) {
+            NSMutableDictionary *bdict = [_bDataDict objectAtIndex:i];
+            if([[bdict objectForKey:@"l"] isEqualToString:@"1"]) {
+                int tIndex = LABEL_TAG_OFFSET + i;
+                UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
+                [self handleLowerLabels:tLabel playSound:NO location:NSNotFound];
+            }
+        }
+        
+        // replace all found words with space
+        for(NSMutableDictionary *tdictI in _tDataDict) {
+            NSRange range = [searchKeyCopy rangeOfString:[tdictI objectForKey:@"s"]];
+            if(range.location != NSNotFound) {
+                searchKeyCopy = [searchKeyCopy stringByReplacingCharactersInRange:range withString:@" "];
+            }
+        }
+        
+        // Push the label
+        [_bDataDict indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            NSMutableDictionary *bdict = (NSMutableDictionary *)obj;
+            if([[bdict objectForKey:@"l"] isEqualToString:@"0"]){
+                NSString *charAt = [NSString stringWithFormat:@"%c", [_question.scramble characterAtIndex:idx]];
+                NSRange range = [searchKeyCopy rangeOfString:charAt];
+                if (range.location != NSNotFound) {
+                    int tIndex = LABEL_TAG_OFFSET + idx;
+                    UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
+                    [self handleLowerLabels:tLabel playSound:YES location:range.location];
+                    *stop = YES;
+                    return YES;
+                }
+            }
+            return NO;
+        }];
+    }];
+}
+
+-(void) hideLetter:(UIView*)sender {
+    UIView *contentView = [sender.superview.superview.subviews objectAtIndex:1];
+    CGRect cvRect = contentView.frame;
+    cvRect.origin.x = 0 - cvRect.size.width;
+    [[GameScore sharedInstance] updateGameCoin:-5];
+    _titleScoreText.text = [NSString stringWithFormat:@"%lld", [GameScore sharedInstance].coin];
+    
+    [UIView animateWithDuration:0.2 animations:^{sender.superview.alpha = 0.0; contentView.frame = cvRect;} completion:^(BOOL finished){ [contentView.superview removeFromSuperview];
+        
+        for (int i = 0; i < [_bDataDict count]; i++) {
+            NSMutableDictionary *bdict = [_bDataDict objectAtIndex:i];
+            if([[bdict objectForKey:@"l"] isEqualToString:@"1"]) {
+                int tIndex = LABEL_TAG_OFFSET + i;
+                UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
+                [self handleLowerLabels:tLabel playSound:NO location:NSNotFound];
+            }
+        }
+        
+        for (int i = 0; i < [_bDataDict count]; i++) {
+            NSMutableDictionary *bdict = [_bDataDict objectAtIndex:i];
+            if([[bdict objectForKey:@"l"] isEqualToString:@"0"]) {
+                NSString *charAt = [NSString stringWithFormat:@"%c", [_question.scramble characterAtIndex:i]];
+                NSRange range = [_question.solution rangeOfString:charAt];
+                if (range.location == NSNotFound) {
+                    int tIndex = LABEL_TAG_OFFSET + i;
+                    UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
+                    
+                    [UIView animateWithDuration:0.5 animations:^{
+                        tLabel.alpha = 0;
+                        tLabel.backgroundColor = [UIColor orangeColor];
+                    } completion:^(BOOL finished) {
+                        [tLabel removeFromSuperview];
+                    }];
+                    
+                    [bdict setObject:@"2" forKey:@"l"];
+                    break;
+                }
+            }
+        }
+    }];
+}
+
+-(void)aaShareBubblesDidHide:(AAShareBubbles *)shareBubbles {
+    [UIView animateWithDuration:0.4 animations:^{shareBubbles.superview.alpha = 0.0;} completion:^(BOOL finished){ [shareBubbles.superview removeFromSuperview];}];
+    
+}
+
 #pragma mark - Reload
 - (void) reload {
     UIImage *placeHolder = [UIImage imageNamed:@"loading"];
@@ -658,17 +862,22 @@
     }];
 }
 -(void) showShare:(UIGestureRecognizer*)sender {
-    UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
+    
+    UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
     UIView *modalView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
-    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeShareView:)];
-    gr.numberOfTapsRequired = 1;
-    [modalView addGestureRecognizer:gr];
     [mainWindow addSubview:modalView];
-    KLExpandingSelect *expandingSelect = [[KLExpandingSelect alloc] initWithDelegate:self dataSource: self];
-    [modalView addSubview:expandingSelect];
-    CGPoint center_ = modalView.center;
-    [expandingSelect expandItemsAtPoint:center_];
+    
+    AAShareBubbles *shareBubbles = [[AAShareBubbles alloc] initWithPoint:self.view.center
+                                                                  radius:100
+                                                                  inView:modalView];
+    shareBubbles.delegate = self;
+    shareBubbles.bubbleRadius = 40; // Default is 40
+    shareBubbles.showFacebookBubble = YES;
+    shareBubbles.showTwitterBubble = YES;
+    shareBubbles.showMailBubble = YES;
+    [shareBubbles show];
+
 }
 
 

@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
-#import <GameKit/GameKit.h>
+#import "AAShareBubbles.h"
+@import MessageUI;
+@import GameKit;
 
-@interface SolveChallengeViewController : UIViewController
+@interface SolveChallengeViewController : UIViewController<MFMailComposeViewControllerDelegate, AAShareBubblesDelegate>
 
 @end

@@ -12,6 +12,8 @@
 		4204A2CB196FFD75000D94CB /* GameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2CA196FFD75000D94CB /* GameScore.m */; };
 		4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4204A2CD19700320000D94CB /* AAShareBubbles.bundle */; };
 		4204A2D119700320000D94CB /* AAShareBubbles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2CF19700320000D94CB /* AAShareBubbles.m */; };
+		4204A2D419700528000D94CB /* share52.png in Resources */ = {isa = PBXBuildFile; fileRef = 4204A2D219700528000D94CB /* share52.png */; };
+		4204A2D519700528000D94CB /* share52@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4204A2D319700528000D94CB /* share52@2x.png */; };
 		4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */; };
 		4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED019695DF100245ABC /* NSData+ImageContentType.m */; };
 		4242FEF019695DF100245ABC /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED219695DF100245ABC /* SDImageCache.m */; };
@@ -75,6 +77,8 @@
 		4204A2CD19700320000D94CB /* AAShareBubbles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAShareBubbles.bundle; sourceTree = "<group>"; };
 		4204A2CE19700320000D94CB /* AAShareBubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAShareBubbles.h; sourceTree = "<group>"; };
 		4204A2CF19700320000D94CB /* AAShareBubbles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAShareBubbles.m; sourceTree = "<group>"; };
+		4204A2D219700528000D94CB /* share52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share52.png; sourceTree = "<group>"; };
+		4204A2D319700528000D94CB /* share52@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share52@2x.png"; sourceTree = "<group>"; };
 		4242FECD19695DF100245ABC /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		4242FECF19695DF100245ABC /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 		42B59FB3196830E50051439F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4204A2D219700528000D94CB /* share52.png */,
+				4204A2D319700528000D94CB /* share52@2x.png */,
 				42B59FFB19684BD70051439F /* FontAwesome.otf */,
 				42B59FBC1968311B0051439F /* subtle_stripes@2X.png */,
 				42B59FBD1968311B0051439F /* subtle_stripes.png */,
@@ -478,12 +484,14 @@
 				429F5B801964C48D0009DCBF /* Images.xcassets in Resources */,
 				42B59FFE19684E3D0051439F /* Storyboard_iPhone.storyboard in Resources */,
 				42B59FB9196830F50051439F /* beep-horn.aif in Resources */,
+				4204A2D419700528000D94CB /* share52.png in Resources */,
 				4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */,
 				42B59FBF1968311B0051439F /* subtle_stripes.png in Resources */,
 				42B59FBB196830F50051439F /* sndUndo.aif in Resources */,
 				42B59FFC19684BD70051439F /* FontAwesome.otf in Resources */,
 				429F5B6F1964C48D0009DCBF /* InfoPlist.strings in Resources */,
 				42B59FB8196830F50051439F /* cha-ching.wav in Resources */,
+				4204A2D519700528000D94CB /* share52@2x.png in Resources */,
 				42B59FBA196830F50051439F /* sndLetterButton.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
