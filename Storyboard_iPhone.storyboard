@@ -34,6 +34,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="kOd-gZ-nGH" kind="push" identifier="solvechallenge" id="ehm-bD-mMv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foX-dt-gpI">
                                 <rect key="frame" x="60" y="233" width="200" height="50"/>
@@ -139,6 +142,25 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="549" y="-35"/>
+        </scene>
+        <!--Solve Challenge View Controller-->
+        <scene sceneID="1lx-Al-YX2">
+            <objects>
+                <viewController id="kOd-gZ-nGH" customClass="SolveChallengeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lb0-df-kG6"/>
+                        <viewControllerLayoutGuide type="bottom" id="bqo-YG-QrJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mab-fE-J2P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rgk-os-Mph"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsW-UR-JiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="773"/>
         </scene>
         <!--Img Search View Controller-->
         <scene sceneID="Ng8-qa-wOq">
