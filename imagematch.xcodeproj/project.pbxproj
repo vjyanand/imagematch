@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4204A2C5196FFB22000D94CB /* SolveChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */; };
 		4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */; };
 		4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED019695DF100245ABC /* NSData+ImageContentType.m */; };
 		4242FEF019695DF100245ABC /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED219695DF100245ABC /* SDImageCache.m */; };
@@ -61,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4204A2C3196FFB22000D94CB /* SolveChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolveChallengeViewController.h; sourceTree = "<group>"; };
+		4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolveChallengeViewController.m; sourceTree = "<group>"; };
 		4242FECD19695DF100245ABC /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		4242FECF19695DF100245ABC /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				42B5A0031968C4450051439F /* FlickrPhotoCell.m */,
 				42CB202B196E280B00DA552F /* MakeQuestionViewController.h */,
 				42CB202C196E280B00DA552F /* MakeQuestionViewController.m */,
+				4204A2C3196FFB22000D94CB /* SolveChallengeViewController.h */,
+				4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */,
 				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B7F1964C48D0009DCBF /* Images.xcassets */,
 				429F5B6B1964C48D0009DCBF /* Supporting Files */,
@@ -470,6 +475,7 @@
 				4242FEF419695DF100245ABC /* SDWebImageDownloaderOperation.m in Sources */,
 				4242FEFD19695DF100245ABC /* UIView+WebCacheOperation.m in Sources */,
 				42B5A0041968C4450051439F /* FlickrPhotoCell.m in Sources */,
+				4204A2C5196FFB22000D94CB /* SolveChallengeViewController.m in Sources */,
 				4242FEF719695DF100245ABC /* UIButton+WebCache.m in Sources */,
 				42CB205E196EB14200DA552F /* UIView+Autolayout.m in Sources */,
 				4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */,
