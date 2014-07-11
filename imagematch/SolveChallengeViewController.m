@@ -3,6 +3,12 @@
 #import "Question.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
+#import "GameScore.h"
+#import "MBHUDView.h"
+#import "UIImageView+WebCache.h"
+#import <QuartzCore/QuartzCore.h>
+
+#define LABEL_TAG_OFFSET 60
 
 @interface SolveChallengeViewController ()
 @property (nonatomic, strong) Question *question;
@@ -55,7 +61,7 @@
     
     [self.navigationItem setTitleView:titleView];
     
-    [self.navigationController setDelegate:self];
+    //[self.navigationController setDelegate:self];
     UIImage *menuButtonImage = [UIImage imageNamed:@"list.png"];
     UIButton *btnToggle = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnToggle setImage:menuButtonImage forState:UIControlStateNormal];
@@ -65,11 +71,7 @@
     self.navigationItem.leftBarButtonItem = menuBarButton;
     
     int boxSize = 120;
-    int yPoint = (self.view.bounds.size.height - 490.0) / 2;
-    if ([[UIScreen mainScreen] bounds].size.height < 500) {
-        boxSize = 100;
-        yPoint = (self.view.bounds.size.height - 440.0) / 2;
-    }
+    int yPoint = (self.view.bounds.size.height - 400.0) / 2;
     
     int boxSpace = 4;
     int width = (boxSize * 2) + (boxSpace);
@@ -127,8 +129,534 @@
         AudioServicesCreateSystemSoundID(( __bridge CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep-horn" ofType:@"aif"]], &_beepPlayer);
         AudioServicesCreateSystemSoundID(( __bridge CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"cha-ching" ofType:@"wav"]], &_coinPlayer);
     }
+    
+    if(_currentMatch) {
+        if(_currentMatch.matchData == nil) {
+            [_currentMatch loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
+                [self loadGameFromMatchData:matchData];
+            }];
+        } else {
+            [self loadGameFromMatchData:_currentMatch.matchData];
+        }
+    } else if (_question.scramble == nil) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadQuestion];
+        });
+    }
 }
 
+-(void) imgTapRecognizer:(UIGestureRecognizer*)sender {
+    UIImageView *imgView = (UIImageView*)sender.view;
+    for (int i = 10; i < 14; i++) {
+        [self.view viewWithTag:i].userInteractionEnabled = NO;
+    }
+    [UIView animateWithDuration:0.4 animations:^{
+        if(imgView.frame.size.height > 120) {
+            int index = imgView.tag - 10;
+            imgView.frame = [[_imgPostions objectAtIndex:index] CGRectValue];
+        } else {
+            [self.view bringSubviewToFront:imgView];
+            CGRect blowupRect = CGRectMake(_imgHolder1.frame.origin.x, _imgHolder1.frame.origin.y, (_imgHolder4.frame.size.width * 2) + 6, (_imgHolder4.frame.size.height * 2) + 6);
+            imgView.frame = blowupRect;
+        }
+    } completion:^(BOOL finished) {
+        for (int i = 10; i < 14; i++) {
+            [self.view viewWithTag:i].userInteractionEnabled = YES;
+        }
+    }];
+}
+
+-(void) loadGameFromMatchData:(NSData*)matchData {
+    self.question = [[Question alloc] initWithNSGameData:matchData];
+    [self reload];
+}
+
+#pragma mark - Reload
+- (void) reload {
+    UIImage *placeHolder = [UIImage imageNamed:@"loading"];
+    
+    [_imgHolder1 sd_setImageWithURL:[NSURL URLWithString:[_question.imgURLs objectAtIndex:0]] placeholderImage:placeHolder options:SDWebImageProgressiveDownload | SDWebImageRetryFailed];
+    [_imgHolder2 sd_setImageWithURL:[NSURL URLWithString:[_question.imgURLs objectAtIndex:1]] placeholderImage:placeHolder options:SDWebImageProgressiveDownload | SDWebImageRetryFailed];
+    [_imgHolder3 sd_setImageWithURL:[NSURL URLWithString:[_question.imgURLs objectAtIndex:2]] placeholderImage:placeHolder options:SDWebImageProgressiveDownload | SDWebImageRetryFailed];
+    [_imgHolder4 sd_setImageWithURL:[NSURL URLWithString:[_question.imgURLs objectAtIndex:3]] placeholderImage:placeHolder options:SDWebImageProgressiveDownload | SDWebImageRetryFailed];
+    
+    int boxSpace = 5;
+    int qSpacing = 20;
+    if ([[UIScreen mainScreen] bounds].size.height < 500) qSpacing = 12;
+    int yPoint = _imgHolder4.frame.origin.y + _imgHolder4.frame.size.height + qSpacing;
+    int strLength = (int)[_question.solution length];
+    int boxSize = (self.view.bounds.size.width - 30 - (boxSpace * (strLength -1))) / strLength;
+    if(boxSize > 40) boxSize = 40;
+    for (UIView *lable in self.view.subviews) {
+        if ([lable isKindOfClass:[UILabel class]]){
+            [lable removeFromSuperview];
+        } else if (lable.tag > 79 && lable.tag < 95) { //Removes line
+            [lable removeFromSuperview];
+        }
+    }
+    
+    int width = (boxSize * strLength) + (boxSpace * (strLength -1));
+    int startPoint = (self.view.bounds.size.width - width) / 2;
+    self.tDataDict = [[NSMutableArray alloc] initWithCapacity:strLength];
+    self.bDataDict = [[NSMutableArray alloc] initWithCapacity:_question.scramble.length];
+    
+    for (int i=0; i < strLength; i++) {
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(startPoint, yPoint + (boxSize - 2), boxSize, 2)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        lineView.tag = 80 + i;
+        [self.view addSubview:lineView];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSValue valueWithCGRect:CGRectMake(startPoint, yPoint, boxSize, boxSize)], @"f", @"", @"s", nil];
+        startPoint += boxSize + boxSpace;
+        [_tDataDict addObject:dict];
+    }
+    
+    yPoint += (boxSpace + boxSize + qSpacing + 10);
+    int cols = (int)[_question.scramble length] / 2 ;
+    boxSize = (self.view.bounds.size.width - 30 - (boxSpace * (cols))) / (cols + 1); //Width - 15px padding - space
+    if (boxSize > 44) boxSize = 44; //Dont want bigger than 44
+    width = (boxSize * (cols + 1)) + (boxSpace * (cols)); //total width of boxes
+    startPoint = (self.view.bounds.size.width - width) / 2; //where to start from
+    for (int i=0; i < cols; i++) {
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(startPoint, yPoint, boxSize, boxSize)];
+        titleLabel.layer.borderColor = [UIColor darkTextColor].CGColor;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.layer.borderWidth = 0.4f;
+        titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:20.0];
+        titleLabel.layer.cornerRadius = 2.0;
+        titleLabel.layer.masksToBounds = NO;
+        titleLabel.text = [[NSString stringWithFormat:@"%c",[_question.scramble characterAtIndex:i]] uppercaseString] ;
+        titleLabel.userInteractionEnabled = YES;
+        titleLabel.tag = LABEL_TAG_OFFSET + i ;
+        UITapGestureRecognizer *recog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchNotificationForLower:)];
+        [recog setNumberOfTouchesRequired:1];
+        [titleLabel addGestureRecognizer:recog];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSValue valueWithCGRect:titleLabel.frame], @"f", @"0", @"l", @"", @"p", nil];
+        [_bDataDict addObject:dict];
+        
+        [self.view addSubview:titleLabel];
+        startPoint = startPoint + boxSize + boxSpace;
+    }
+    
+    UILabel *helpLabel = [[UILabel alloc] initWithFrame:CGRectMake(startPoint + 5, yPoint + 3, boxSize - 6, boxSize - 6 )];
+    helpLabel.userInteractionEnabled = YES;
+    helpLabel.backgroundColor = [UIColor colorFromHexCode:@"#00AAFF"];
+    helpLabel.text = @"?";
+    helpLabel.textColor = [UIColor whiteColor];
+    helpLabel.textAlignment = NSTextAlignmentCenter;
+    helpLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    helpLabel.layer.cornerRadius = helpLabel.bounds.size.height/2;
+    CABasicAnimation *rotateAnim=[CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+    rotateAnim.fromValue=[NSNumber numberWithDouble:0.0];
+    rotateAnim.toValue=[NSNumber numberWithDouble:M_PI_2];
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.duration = 2;
+    group.repeatCount = HUGE_VALF;
+    group.autoreverses = YES;
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    group.animations = [NSArray arrayWithObjects: rotateAnim, nil];
+    [helpLabel.layer addAnimation:group forKey:@"allMyAnimations"];
+    
+    /*CFTimeInterval pausedTime = [helpLabel.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+     helpLabel.layer.speed = 0.0;
+     helpLabel.layer.timeOffset = pausedTime;*/
+    
+    UITapGestureRecognizer *helpRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOptions:)];
+    [helpRecog setNumberOfTouchesRequired:1];
+    [helpLabel addGestureRecognizer:helpRecog];
+    [self.view addSubview:helpLabel];
+    
+    yPoint = yPoint + boxSize + 15;
+    startPoint = (self.view.bounds.size.width - width) / 2;
+    
+    for (int i=0; i < cols; i++) {
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(startPoint, yPoint, boxSize, boxSize)];
+        titleLabel.layer.borderColor = [UIColor darkTextColor].CGColor;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.layer.borderWidth = 0.4f;
+        titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:20.0];
+        titleLabel.layer.cornerRadius = 2.0;
+        titleLabel.layer.masksToBounds = NO;
+        titleLabel.text = [[NSString stringWithFormat:@"%c",[_question.scramble characterAtIndex:(i + cols)]] uppercaseString] ;
+        titleLabel.userInteractionEnabled = YES;
+        titleLabel.tag = LABEL_TAG_OFFSET + i + cols;
+        UITapGestureRecognizer *recog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchNotificationForLower:)];
+        [recog setNumberOfTouchesRequired:1];
+        [titleLabel addGestureRecognizer:recog];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSValue valueWithCGRect:titleLabel.frame], @"f", @"0", @"l", @"", @"p",nil];
+        [_bDataDict addObject:dict];
+        [self.view addSubview:titleLabel];
+        startPoint = startPoint + boxSize + boxSpace;
+    }
+    
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(startPoint + 5, yPoint + 3, 40, 40)];
+    [shareButton setImage:[UIImage imageNamed:@"share52"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
+    shareButton.tag = 92;
+    
+    /*
+     UILabel *shareLabel = [[UILabel alloc] initWithFrame:CGRectMake(startPoint + 5, yPoint + 3, boxSize - 6, boxSize - 6 )];
+     shareLabel.userInteractionEnabled = YES;
+     shareLabel.font = [UIFont fontWithName:@"FontAwesome" size:35];
+     shareLabel.textColor = [UIColor colorFromHexCode:@"#00AAFF"];
+     shareLabel.text = @"\uf14d";
+     UITapGestureRecognizer *shareRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showShare:)];
+     [shareRecog setNumberOfTouchesRequired:1];
+     [shareLabel addGestureRecognizer:shareRecog];
+     
+     shareLabel.textAlignment = NSTextAlignmentCenter;
+     shareLabel.layer.cornerRadius = 4.0; */
+    
+    
+    [self.view addSubview:shareButton];
+}
+
+-(void) goToBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) doDelayedAction:(int) action {
+    
+    if(_isVisible == YES) {
+        _lastAction = action;
+        return;
+    }
+    
+    if(action == 1) {
+        [self reload];
+    } else if(action == 2) {
+        MBHUDView *hud = [MBHUDView hudWithBody:@"Hurray!, You solved all\nTry after few hours \nfor new Challenges" type:MBAlertViewHUDTypeDefault hidesAfter:2.1 show:NO];
+        hud.size = CGSizeMake(self.view.bounds.size.width -20, self.view.bounds.size.width -20);
+        hud.bodyFont = [UIFont fontWithName:@"STHeitiTC-Light" size:20.0];
+        hud.uponDismissalBlock = ^ { [self goToBack]; };
+        hud.animationType = MBAlertAnimationTypeBounce;
+        [hud addToDisplayQueue];
+    } else if(action == 3) {
+        MBHUDView *hud = [MBHUDView hudWithBody:@"Error!, Please try again" type:MBAlertViewHUDTypeDefault hidesAfter:2.1 show:NO];
+        hud.size = CGSizeMake(self.view.bounds.size.width -20, self.view.bounds.size.width -20);
+        hud.bodyFont = [UIFont fontWithName:@"STHeitiTC-Light" size:20.0];
+        hud.uponDismissalBlock = ^ { [self goToBack]; };
+        hud.animationType = MBAlertAnimationTypeBounce;
+        [hud addToDisplayQueue];
+    }
+    _lastAction = 0;
+}
+
+-(void) loadQuestion {
+    [MBHUDView hudWithBody:@"..." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.0 show:YES];
+    NSString *URLPath = [NSString stringWithFormat:@"https://iavian.net/im/getquestion?q=%d&u=%@", _question.qID, [[self uniqueId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *URL = [NSURL URLWithString:URLPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        [MBHUDView dismissCurrentHUD];
+        NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
+        if (!error && responseCode == 200) {
+            id res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            if (res && [res isKindOfClass:[NSDictionary class]]) {
+                self.question = [[Question alloc] init];
+                self.question.scramble = [res objectForKey:@"s"];
+                self.question.solution = [res objectForKey:@"t"];
+                self.question.imgURLs = [res objectForKey:@"i"];
+                self.question.qID = [[res objectForKey:@"id"] intValue];
+                self.question.qOwner = [res objectForKey:@"u"];
+                [self doDelayedAction:1];
+            } else {
+             //   [self doDelayedAction:2];
+            }
+        } else {
+           // [self doDelayedAction:3];
+        }
+    }];
+}
+
+-(void) didTouchNotificationForLower:(UIGestureRecognizer*)sender {
+    UILabel *label = (UILabel*)sender.view;
+    [self handleLowerLabels:label playSound:YES location:NSNotFound];
+}
+
+-(void) handleLowerLabels:(UIView*)label playSound:(bool) playSound location:(NSUInteger) location {
+    int index = label.tag - LABEL_TAG_OFFSET;
+    NSMutableDictionary *bdict = [_bDataDict objectAtIndex:index];
+    if([[bdict objectForKey:@"l"] isEqualToString:@"0"]) { // Label is tapped from bottom
+        int freeIndex = NSNotFound;
+        if (location != NSNotFound) {
+            [bdict setObject:@"" forKey:@"c"];
+            ((UILabel*)label).backgroundColor = [UIColor greenSeaColor];
+            freeIndex = location;
+        } else {
+            for(NSMutableDictionary *tdictI in _tDataDict) {
+                if([[tdictI objectForKey:@"s"] isEqualToString:@""]) {
+                    freeIndex = [_tDataDict indexOfObject:tdictI];
+                    break;
+                }
+            }
+        }
+        if (freeIndex == NSNotFound) {
+            return;
+        } else {
+            [[_tDataDict objectAtIndex:freeIndex] setObject:[NSString stringWithFormat:@"%c", [_question.scramble characterAtIndex:index]] forKey:@"s"];
+            [bdict setObject:[NSNumber numberWithInt:freeIndex] forKey:@"p"];
+            
+            AudioServicesPlaySystemSound(_tapPlayer);
+            NSMutableArray *aAnswer = [[NSMutableArray alloc] init];
+            for(NSMutableDictionary *tdictI in _tDataDict) {
+                [aAnswer addObject:[tdictI objectForKey:@"s"]];
+            }
+            
+            NSString *answer = [aAnswer componentsJoinedByString:@""]; // Answer for far from top header
+            NSMutableDictionary *tdict = [_tDataDict objectAtIndex:freeIndex];
+            [bdict setObject:@"1" forKey:@"l"];
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                label.frame = [[tdict objectForKey:@"f"] CGRectValue];
+            } completion:^(BOOL finished) {
+                if(answer.length == _question.solution.length) {
+                    if([answer isEqualToString:_question.solution]) {
+                        self.qoID = _question.qID;
+                        if(_currentMatch == nil) {
+                            [self loadQuestion];
+                        } else {
+                            for(GKTurnBasedParticipant *participant in _currentMatch.participants) {
+                                if([participant.playerID isEqualToString:_currentMatch.currentParticipant.playerID]) {
+                                    participant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+                                } else {
+                                    participant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+                                }
+                            }
+                            GKTurnBasedParticipant *nextPlayer;
+                            if (_currentMatch.currentParticipant == [_currentMatch.participants objectAtIndex:0]) {
+                                nextPlayer = [[_currentMatch participants] lastObject];
+                            } else {
+                                nextPlayer = [[_currentMatch participants] objectAtIndex:0];
+                            }
+                            [_currentMatch participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeWon nextParticipants:@[nextPlayer] turnTimeout:60 matchData:_currentMatch.matchData completionHandler:^(NSError *error) {
+                                if(error == nil) {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:@"RELOAD_CHALLENGES" object:nil];
+                                }
+                            }];
+                        }
+                        [self showCompleteDialog];
+                    } else {
+                        for (int i = 0; i < [_bDataDict count]; i++) {
+                            NSMutableDictionary *bdict = [_bDataDict objectAtIndex:i];
+                            AudioServicesPlaySystemSound(_beepPlayer);
+                            if([[bdict objectForKey:@"l"] isEqualToString:@"1"]) {
+                                int tIndex = LABEL_TAG_OFFSET + i;
+                                UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
+                                [UIView animateWithDuration:0.5 animations:^{
+                                    tLabel.textColor = [UIColor redColor];
+                                    tLabel.alpha = 0;
+                                } completion:^(BOOL finished) {
+                                    tLabel.textColor = [UIColor blackColor];
+                                    tLabel.alpha = 1.0;
+                                    [self handleLowerLabels:tLabel playSound:NO location:NSNotFound];
+                                }];
+                            }
+                        }
+                    }
+                }
+            }];
+        }
+    } else if([bdict objectForKey:@"c"] == nil){
+        if(playSound == YES) {
+            AudioServicesPlaySystemSound(_tapDownPlayer);
+        }
+        [bdict setObject:@"0" forKey:@"l"];
+        int freeIndex = [[bdict objectForKey:@"p"] intValue];
+        [[_tDataDict objectAtIndex:freeIndex] setObject:@"" forKey:@"s"];
+        [UIView animateWithDuration:0.4 animations:^{
+            CABasicAnimation *fullRotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+            fullRotation.fromValue = [NSNumber numberWithFloat:0];
+            fullRotation.toValue = [NSNumber numberWithFloat:((360*M_PI)/180)];
+            fullRotation.duration = 0.3;
+            fullRotation.repeatCount = 1;
+            [label.layer addAnimation:fullRotation forKey:@"360"];
+            label.frame = [[bdict objectForKey:@"f"] CGRectValue];
+        } completion:^(BOOL finished) {
+            [label.layer removeAnimationForKey:@"360"];
+            label.layer.borderColor = [UIColor darkTextColor].CGColor;
+        }];
+    }
+}
+
+-(NSString*) uniqueId {
+    NSString *uniqueId = [GKLocalPlayer localPlayer].playerID;
+    if (uniqueId == nil) {
+        if ([[UIDevice currentDevice] respondsToSelector:NSSelectorFromString(@"identifierForVendor")])
+            uniqueId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    }
+    return uniqueId;
+}
+
+-(void) showCompleteDialog {
+    int points = _question.solution.length * 10;
+    
+    AudioServicesPlaySystemSound(_coinPlayer);
+    UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    UIView *dialogLayer = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    dialogLayer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.85f];
+    [GameScore sharedInstance].score += points;
+    [[GameScore sharedInstance] updateGameCoin:_question.solution.length];
+    _titleScoreText.text = [NSString stringWithFormat:@"%lld", [GameScore sharedInstance].coin];
+    
+    int yPoint = (dialogLayer.bounds.size.height - 392)/2;
+    
+    UILabel *lblAwesome = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint, dialogLayer.bounds.size.width, 40)];
+    NSArray *texts = @[@"AWESOME",@"SUPERB!", @"STUNNING", @"WONDERFUL"];
+    NSUInteger randomIndex = arc4random() % [texts count];
+    lblAwesome.text = [NSString stringWithFormat:@"%@", [texts objectAtIndex:randomIndex]];
+    lblAwesome.font = [UIFont fontWithName:@"Helvetica-Bold" size:50];
+    lblAwesome.textColor = [UIColor sunflowerColor];
+    lblAwesome.textAlignment = NSTextAlignmentCenter;
+    lblAwesome.backgroundColor = [UIColor clearColor];
+    lblAwesome.adjustsFontSizeToFitWidth = YES;
+    
+    UILabel *lblAwesome1 = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint+=55, dialogLayer.bounds.size.width, 40)];
+    lblAwesome1.text = [NSString stringWithFormat:@"YOU'E GUESSED THE WORD"];
+    lblAwesome1.font = [UIFont fontWithName:@"BanglaSangamMN-Bold" size:18];
+    lblAwesome1.textColor = [UIColor whiteColor];
+    lblAwesome1.textAlignment = NSTextAlignmentCenter;
+    lblAwesome1.backgroundColor = [UIColor clearColor];
+    
+    yPoint += 70;
+    int lblSize = 40;
+    int lblSpacing = 10;
+    if( _question.solution.length > 6 ) {
+        lblSize = 25;
+        lblSpacing = 4;
+    }
+    
+    UILabel *lblCscore = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint+=55, dialogLayer.bounds.size.width, 40)];
+    lblCscore.text = [NSString stringWithFormat:@"You Scored %d Points", points];
+    lblCscore.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20];
+    lblCscore.textAlignment = NSTextAlignmentCenter;
+    lblCscore.textColor = [UIColor whiteColor];
+    lblCscore.backgroundColor = [UIColor clearColor];
+    
+    UILabel *lblcoin = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint+=70, dialogLayer.bounds.size.width, 40)];
+    lblcoin.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:25];
+    lblcoin.textAlignment = NSTextAlignmentCenter;
+    lblcoin.textColor = [UIColor blackColor];
+    lblcoin.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *conImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin84"]];
+    [conImageView setFrame:CGRectMake(20, 0, 84, 84)];
+    conImageView.center=CGPointMake(lblcoin.center.x, lblcoin.center.y);
+    
+    int xPoint = (self.view.bounds.size.width - ((lblSize * _question.solution.length) + (lblSpacing*(_question.solution.length-1))))/2;
+    for(int i=0; i<_question.solution.length; i++) {
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(xPoint, yPoint - 125, lblSize, lblSize)];
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:20.0];
+        lbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"scale"]];
+        lbl.text = [NSString stringWithFormat:@"%c",[_question.solution characterAtIndex:i]];
+        [dialogLayer addSubview:lbl];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ((i*0.08))* NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,44,44)];
+            imgView.image = [UIImage imageNamed:@"coin84"];
+            [dialogLayer addSubview:imgView];
+            [dialogLayer sendSubviewToBack:imgView];
+            [CATransaction begin];
+            [CATransaction setCompletionBlock:^{
+                [imgView removeFromSuperview];
+                lblcoin.text = [NSString stringWithFormat:@"%d", i+1];
+            }];
+            
+            CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+            pathAnimation.calculationMode = kCAAnimationPaced;
+            pathAnimation.fillMode = kCAFillModeForwards;
+            pathAnimation.removedOnCompletion = NO;
+            pathAnimation.duration = 0.5;
+            pathAnimation.delegate = self;
+            CGMutablePathRef curvedPath = CGPathCreateMutable();
+            CGPathMoveToPoint(curvedPath, NULL, lbl.center.x, lbl.center.y);
+            CGPathAddCurveToPoint(curvedPath, NULL, lbl.center.x, lbl.center.y, self.view.bounds.size.width/2, yPoint + 220, conImageView.center.x, conImageView.center.y);
+            pathAnimation.path = curvedPath;
+            CGPathRelease(curvedPath);
+            [imgView.layer addAnimation:pathAnimation forKey:@"curveAnimation"];
+            [CATransaction commit];
+            
+        });
+        xPoint+=(lblSize + lblSpacing);
+    }
+    
+    UIButton *thumsUp = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    thumsUp.layer.shadowColor = [UIColor colorWithWhite:0.2 alpha:0.3].CGColor;
+    thumsUp.layer.cornerRadius = 6.0f;
+    thumsUp.center = CGPointMake(dialogLayer.center.x - 40, yPoint += 100);
+    thumsUp.backgroundColor = [UIColor clearColor];
+    [thumsUp setImage:[UIImage imageNamed:@"up_button.png"] forState:UIControlStateNormal];
+    [[thumsUp imageView] setContentMode:UIViewContentModeScaleAspectFit];
+    [thumsUp addTarget:self action:@selector(thumbsHandle:) forControlEvents:UIControlEventTouchUpInside];
+    [thumsUp setTag:22];
+    
+    UIButton *thumsDown = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    thumsDown.layer.shadowColor = [UIColor colorWithWhite:0.2 alpha:0.3].CGColor;
+    thumsDown.layer.cornerRadius = 6.0f;
+    thumsDown.center = CGPointMake(dialogLayer.center.x + 40, yPoint);
+    thumsDown.backgroundColor = [UIColor clearColor];
+    [thumsDown setImage:[UIImage imageNamed:@"down_button.png"] forState:UIControlStateNormal];
+    [[thumsDown imageView] setContentMode:UIViewContentModeScaleAspectFit];
+    [thumsDown addTarget:self action:@selector(thumbsHandle:) forControlEvents:UIControlEventTouchUpInside];
+    [thumsDown setTag:20];
+    
+    UILabel *cnt = [[UILabel alloc] initWithFrame:CGRectMake(0, dialogLayer.bounds.size.height - 44, dialogLayer.bounds.size.width, 44)];
+    cnt.backgroundColor = [UIColor clearColor];
+    cnt.textAlignment = NSTextAlignmentCenter;
+    cnt.text = @"Touch anywhere to continue";
+    cnt.textColor = [UIColor asbestosColor];
+    
+    [dialogLayer addSubview:lblCscore];
+    [dialogLayer addSubview:cnt];
+    [dialogLayer addSubview:thumsUp];
+    [dialogLayer addSubview:thumsDown];
+    [dialogLayer addSubview:lblAwesome];
+    [dialogLayer addSubview:lblAwesome1];
+    [dialogLayer addSubview:conImageView];
+    [dialogLayer addSubview:lblcoin];
+    [mainWindow addSubview:dialogLayer];
+    
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeDialog:)];
+    gr.numberOfTapsRequired = 1;
+    [dialogLayer addGestureRecognizer:gr];
+    _isVisible = YES;
+}
+
+
+-(void) thumbsHandle:(id)sender {
+    UIButton *btnThumbs = (UIButton*) sender;
+    int count = btnThumbs.tag - 21;
+    if(count == 1) {
+        [btnThumbs setImage:[UIImage imageNamed:@"up_button_selected.png"] forState:UIControlStateNormal];
+        [(UIButton*)[btnThumbs.superview viewWithTag:20] setImage:[UIImage imageNamed:@"down_button.png"] forState:UIControlStateNormal];
+    } else {
+        [btnThumbs setImage:[UIImage imageNamed:@"down_button_selected.png"] forState:UIControlStateNormal];
+        [(UIButton*)[btnThumbs.superview viewWithTag:22] setImage:[UIImage imageNamed:@"up_button.png"] forState:UIControlStateNormal];
+    }
+    
+    NSString *URLPath = [NSString stringWithFormat:@"https://iavian.net/im/rate?s=%d&q=%d&u=%@", count, _qoID, [[self uniqueId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURL *URL = [NSURL URLWithString:URLPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data,
+                                                                                                            NSError *error) {
+        
+    }];
+}
+
+-(void) closeDialog:(UIGestureRecognizer*)sender {
+    _isVisible = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        sender.view.transform = CGAffineTransformScale(sender.view.transform, 0.01, 0.01);
+    } completion:^(BOOL finished) {
+        [sender.view removeFromSuperview];
+        if (_currentMatch) {
+            [self goToBack];
+        } else {
+            [self doDelayedAction:_lastAction];
+        }
+    }];
+}
 
 /*
 #pragma mark - Navigation
