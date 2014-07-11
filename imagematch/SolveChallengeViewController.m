@@ -657,6 +657,20 @@
         }
     }];
 }
+-(void) showShare:(UIGestureRecognizer*)sender {
+    UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
+    UIView *modalView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeShareView:)];
+    gr.numberOfTapsRequired = 1;
+    [modalView addGestureRecognizer:gr];
+    [mainWindow addSubview:modalView];
+    KLExpandingSelect *expandingSelect = [[KLExpandingSelect alloc] initWithDelegate:self dataSource: self];
+    [modalView addSubview:expandingSelect];
+    CGPoint center_ = modalView.center;
+    [expandingSelect expandItemsAtPoint:center_];
+}
+
 
 /*
 #pragma mark - Navigation

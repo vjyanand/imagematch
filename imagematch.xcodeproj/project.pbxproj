@@ -10,6 +10,8 @@
 		4204A2C5196FFB22000D94CB /* SolveChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */; };
 		4204A2C8196FFD24000D94CB /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2C7196FFD24000D94CB /* Question.m */; };
 		4204A2CB196FFD75000D94CB /* GameScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2CA196FFD75000D94CB /* GameScore.m */; };
+		4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4204A2CD19700320000D94CB /* AAShareBubbles.bundle */; };
+		4204A2D119700320000D94CB /* AAShareBubbles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204A2CF19700320000D94CB /* AAShareBubbles.m */; };
 		4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */; };
 		4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED019695DF100245ABC /* NSData+ImageContentType.m */; };
 		4242FEF019695DF100245ABC /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FED219695DF100245ABC /* SDImageCache.m */; };
@@ -70,6 +72,9 @@
 		4204A2C7196FFD24000D94CB /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		4204A2C9196FFD75000D94CB /* GameScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScore.h; sourceTree = "<group>"; };
 		4204A2CA196FFD75000D94CB /* GameScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScore.m; sourceTree = "<group>"; };
+		4204A2CD19700320000D94CB /* AAShareBubbles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAShareBubbles.bundle; sourceTree = "<group>"; };
+		4204A2CE19700320000D94CB /* AAShareBubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAShareBubbles.h; sourceTree = "<group>"; };
+		4204A2CF19700320000D94CB /* AAShareBubbles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAShareBubbles.m; sourceTree = "<group>"; };
 		4242FECD19695DF100245ABC /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		4242FECE19695DF100245ABC /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		4242FECF19695DF100245ABC /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -180,6 +185,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4204A2CC19700317000D94CB /* AAShareBubbles */ = {
+			isa = PBXGroup;
+			children = (
+				4204A2CD19700320000D94CB /* AAShareBubbles.bundle */,
+				4204A2CE19700320000D94CB /* AAShareBubbles.h */,
+				4204A2CF19700320000D94CB /* AAShareBubbles.m */,
+			);
+			name = AAShareBubbles;
+			sourceTree = "<group>";
+		};
 		4242FECC19695DF100245ABC /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +305,7 @@
 		42B59FB2196830D70051439F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				4204A2CC19700317000D94CB /* AAShareBubbles */,
 				42CB2031196EB14200DA552F /* MBAlertView */,
 				4242FECC19695DF100245ABC /* SDWebImage */,
 				42B59FC219683D3D0051439F /* FlatKit */,
@@ -462,6 +478,7 @@
 				429F5B801964C48D0009DCBF /* Images.xcassets in Resources */,
 				42B59FFE19684E3D0051439F /* Storyboard_iPhone.storyboard in Resources */,
 				42B59FB9196830F50051439F /* beep-horn.aif in Resources */,
+				4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */,
 				42B59FBF1968311B0051439F /* subtle_stripes.png in Resources */,
 				42B59FBB196830F50051439F /* sndUndo.aif in Resources */,
 				42B59FFC19684BD70051439F /* FontAwesome.otf in Resources */,
@@ -519,6 +536,7 @@
 				4204A2C8196FFD24000D94CB /* Question.m in Sources */,
 				4242FEF819695DF100245ABC /* UIImage+GIF.m in Sources */,
 				42CB2060196EB14200DA552F /* MBFlatAlertButton.m in Sources */,
+				4204A2D119700320000D94CB /* AAShareBubbles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
