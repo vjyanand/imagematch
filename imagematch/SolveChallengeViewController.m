@@ -41,8 +41,6 @@
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 34)];
     [titleView setBackgroundColor:[UIColor colorFromHexCode:@"#E13A34"]];
     titleView.layer.cornerRadius = 8.0;
-    [titleView.layer setBorderColor:[UIColor colorFromHexCode:@"#BF2C27"].CGColor];
-    [titleView.layer setBorderWidth:1.5f];
     
     UIImageView *titleImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin44"]];
     [titleImage setFrame:CGRectMake(2, 2, 30, 30)];
@@ -152,7 +150,7 @@
     }
     [UIView animateWithDuration:0.4 animations:^{
         if(imgView.frame.size.height > 120) {
-            int index = imgView.tag - 10;
+            NSUInteger index = imgView.tag - 10;
             imgView.frame = [[_imgPostions objectAtIndex:index] CGRectValue];
         } else {
             [self.view bringSubviewToFront:imgView];
@@ -316,7 +314,7 @@
                 NSString *charAt = [NSString stringWithFormat:@"%c", [_question.scramble characterAtIndex:idx]];
                 NSRange range = [searchKeyCopy rangeOfString:charAt];
                 if (range.location != NSNotFound) {
-                    int tIndex = LABEL_TAG_OFFSET + idx;
+                    NSUInteger tIndex = LABEL_TAG_OFFSET + idx;
                     UILabel *tLabel = (UILabel*)[self.view viewWithTag:tIndex];
                     [self handleLowerLabels:tLabel playSound:YES location:range.location];
                     *stop = YES;
@@ -388,7 +386,7 @@
     int qSpacing = 20;
     if ([[UIScreen mainScreen] bounds].size.height < 500) qSpacing = 12;
     int yPoint = _imgHolder4.frame.origin.y + _imgHolder4.frame.size.height + qSpacing;
-    int strLength = (int)[_question.solution length];
+    NSUInteger strLength = [_question.solution length];
     int boxSize = (self.view.bounds.size.width - 30 - (boxSpace * (strLength -1))) / strLength;
     if(boxSize > 40) boxSize = 40;
     for (UIView *lable in self.view.subviews) {
@@ -399,7 +397,7 @@
         }
     }
     
-    int width = (boxSize * strLength) + (boxSpace * (strLength -1));
+    NSUInteger width = (boxSize * strLength) + (boxSpace * (strLength -1));
     int startPoint = (self.view.bounds.size.width - width) / 2;
     self.tDataDict = [[NSMutableArray alloc] initWithCapacity:strLength];
     self.bDataDict = [[NSMutableArray alloc] initWithCapacity:_question.scramble.length];
@@ -415,7 +413,7 @@
     }
     
     yPoint += (boxSpace + boxSize + qSpacing + 10);
-    int cols = (int)[_question.scramble length] / 2 ;
+    NSUInteger cols = [_question.scramble length] / 2 ;
     boxSize = (self.view.bounds.size.width - 30 - (boxSpace * (cols))) / (cols + 1); //Width - 15px padding - space
     if (boxSize > 44) boxSize = 44; //Dont want bigger than 44
     width = (boxSize * (cols + 1)) + (boxSpace * (cols)); //total width of boxes
@@ -578,10 +576,10 @@
 }
 
 -(void) handleLowerLabels:(UIView*)label playSound:(bool) playSound location:(NSUInteger) location {
-    int index = label.tag - LABEL_TAG_OFFSET;
+    NSUInteger index = label.tag - LABEL_TAG_OFFSET;
     NSMutableDictionary *bdict = [_bDataDict objectAtIndex:index];
     if([[bdict objectForKey:@"l"] isEqualToString:@"0"]) { // Label is tapped from bottom
-        int freeIndex = NSNotFound;
+        NSUInteger freeIndex = NSNotFound;
         if (location != NSNotFound) {
             [bdict setObject:@"" forKey:@"c"];
             ((UILabel*)label).backgroundColor = [UIColor greenSeaColor];
@@ -598,7 +596,7 @@
             return;
         } else {
             [[_tDataDict objectAtIndex:freeIndex] setObject:[NSString stringWithFormat:@"%c", [_question.scramble characterAtIndex:index]] forKey:@"s"];
-            [bdict setObject:[NSNumber numberWithInt:freeIndex] forKey:@"p"];
+            [bdict setObject:[NSNumber numberWithUnsignedInteger:freeIndex] forKey:@"p"];
             
             AudioServicesPlaySystemSound(_tapPlayer);
             NSMutableArray *aAnswer = [[NSMutableArray alloc] init];
@@ -692,7 +690,7 @@
 }
 
 -(void) showCompleteDialog {
-    int points = _question.solution.length * 10;
+    NSUInteger points = _question.solution.length * 10;
     
     AudioServicesPlaySystemSound(_coinPlayer);
     UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
@@ -730,7 +728,7 @@
     }
     
     UILabel *lblCscore = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint+=55, dialogLayer.bounds.size.width, 40)];
-    lblCscore.text = [NSString stringWithFormat:@"You Scored %d Points", points];
+    lblCscore.text = [NSString stringWithFormat:@"You Scored %ld Points", points];
     lblCscore.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20];
     lblCscore.textAlignment = NSTextAlignmentCenter;
     lblCscore.textColor = [UIColor whiteColor];
@@ -755,7 +753,7 @@
         lbl.text = [NSString stringWithFormat:@"%c",[_question.solution characterAtIndex:i]];
         [dialogLayer addSubview:lbl];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ((i*0.08))* NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, ((i*0.08))* NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,44,44)];
             imgView.image = [UIImage imageNamed:@"coin84"];
             [dialogLayer addSubview:imgView];

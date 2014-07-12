@@ -4,6 +4,7 @@
 #import "UIColor+FlatUI.h"
 #import "MBHUDView.h"
 #import "MakeQuestionViewController.h"
+#import "GameScore.h"
 
 @interface RootViewController ()
 
@@ -74,6 +75,30 @@
     _gameButton2.enabled = YES;
     _gameButton3.enabled = YES;
     _gameButton4.enabled = YES;
+    
+    [[GameScore sharedInstance] loadGameCoinWithCompletionHandler:^(int64_t score, NSError *error) {
+        if(error == nil) {
+            UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 34)];
+            [titleView setBackgroundColor:[UIColor colorFromHexCode:@"#E13A34"]];
+            titleView.layer.cornerRadius = 8.0;
+            
+            UIImageView *titleImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coin44"]];
+            [titleImage setFrame:CGRectMake(2, 2, 30, 30)];
+            [titleView addSubview:titleImage];
+            UILabel *titleScoreText = [[UILabel alloc] initWithFrame:CGRectMake(36, 2, 56, 30)];
+            titleScoreText.backgroundColor = [UIColor clearColor];
+            titleScoreText.textColor = [UIColor whiteColor];
+            titleScoreText.textAlignment = NSTextAlignmentCenter;
+            titleScoreText.shadowColor = [UIColor blackColor];
+            titleScoreText.shadowOffset = CGSizeMake(0, 1);
+            titleScoreText.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0];
+            titleScoreText.adjustsFontSizeToFitWidth = YES;
+            [titleScoreText setTag:70];
+            titleScoreText.text = [NSString stringWithFormat:@"%lld", score];
+            [titleView addSubview:titleScoreText];
+            [self.navigationItem setTitleView:titleView];
+        }
+    }];
 }
 
 - (IBAction)muteVolume:(UITapGestureRecognizer *)sender {

@@ -30,6 +30,10 @@
 		4242FEFB19695DF100245ABC /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEE919695DF100245ABC /* UIImageView+HighlightedWebCache.m */; };
 		4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEEB19695DF100245ABC /* UIImageView+WebCache.m */; };
 		4242FEFD19695DF100245ABC /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEED19695DF100245ABC /* UIView+WebCacheOperation.m */; };
+		4259B17019714F4C006BF9CA /* coin84.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16C19714F4C006BF9CA /* coin84.png */; };
+		4259B17119714F4C006BF9CA /* coin84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16D19714F4C006BF9CA /* coin84@2x.png */; };
+		4259B17219714F4C006BF9CA /* coin44.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16E19714F4C006BF9CA /* coin44.png */; };
+		4259B17319714F4C006BF9CA /* coin44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16F19714F4C006BF9CA /* coin44@2x.png */; };
 		429F5B651964C48D0009DCBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B641964C48D0009DCBF /* Foundation.framework */; };
 		429F5B671964C48D0009DCBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B661964C48D0009DCBF /* CoreGraphics.framework */; };
 		429F5B691964C48D0009DCBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B681964C48D0009DCBF /* UIKit.framework */; };
@@ -112,6 +116,10 @@
 		4242FEEB19695DF100245ABC /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		4242FEEC19695DF100245ABC /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		4242FEED19695DF100245ABC /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		4259B16C19714F4C006BF9CA /* coin84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin84.png; sourceTree = "<group>"; };
+		4259B16D19714F4C006BF9CA /* coin84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin84@2x.png"; sourceTree = "<group>"; };
+		4259B16E19714F4C006BF9CA /* coin44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin44.png; sourceTree = "<group>"; };
+		4259B16F19714F4C006BF9CA /* coin44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin44@2x.png"; sourceTree = "<group>"; };
 		429F5B611964C48D0009DCBF /* imagematch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imagematch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429F5B641964C48D0009DCBF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		429F5B661964C48D0009DCBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -322,6 +330,10 @@
 			children = (
 				4204A2D219700528000D94CB /* share52.png */,
 				4204A2D319700528000D94CB /* share52@2x.png */,
+				4259B16C19714F4C006BF9CA /* coin84.png */,
+				4259B16D19714F4C006BF9CA /* coin84@2x.png */,
+				4259B16E19714F4C006BF9CA /* coin44.png */,
+				4259B16F19714F4C006BF9CA /* coin44@2x.png */,
 				42B59FFB19684BD70051439F /* FontAwesome.otf */,
 				42B59FBC1968311B0051439F /* subtle_stripes@2X.png */,
 				42B59FBD1968311B0051439F /* subtle_stripes.png */,
@@ -482,16 +494,20 @@
 			files = (
 				42B59FBE1968311B0051439F /* subtle_stripes@2X.png in Resources */,
 				429F5B801964C48D0009DCBF /* Images.xcassets in Resources */,
+				4259B17019714F4C006BF9CA /* coin84.png in Resources */,
 				42B59FFE19684E3D0051439F /* Storyboard_iPhone.storyboard in Resources */,
 				42B59FB9196830F50051439F /* beep-horn.aif in Resources */,
 				4204A2D419700528000D94CB /* share52.png in Resources */,
+				4259B17119714F4C006BF9CA /* coin84@2x.png in Resources */,
 				4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */,
 				42B59FBF1968311B0051439F /* subtle_stripes.png in Resources */,
 				42B59FBB196830F50051439F /* sndUndo.aif in Resources */,
 				42B59FFC19684BD70051439F /* FontAwesome.otf in Resources */,
 				429F5B6F1964C48D0009DCBF /* InfoPlist.strings in Resources */,
 				42B59FB8196830F50051439F /* cha-ching.wav in Resources */,
+				4259B17319714F4C006BF9CA /* coin44@2x.png in Resources */,
 				4204A2D519700528000D94CB /* share52@2x.png in Resources */,
+				4259B17219714F4C006BF9CA /* coin44.png in Resources */,
 				42B59FBA196830F50051439F /* sndLetterButton.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

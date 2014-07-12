@@ -3,6 +3,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIColor+FlatUI.h"
 #import "MakeQuestionViewController.h"
+#import "MBHUDView.h"
 
 @interface ImgSearchViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -129,8 +130,6 @@
     if([_imgURLs containsObject:@""]) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     } else {
-        NSLog(@"%@", _imgURLs);
-        
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
     return YES;
@@ -160,12 +159,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FlickrPhotoCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
-    
     NSString *item = [self.items objectAtIndex:indexPath.row];
-    NSLog(@"%@", item);
-    
     [cell setPhoto:item];
-    
     return cell;
 }
 
@@ -175,7 +170,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5.0];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
-        //[MBHUDView dismissCurrentHUD];
+        [MBHUDView dismissCurrentHUD];
         if (!error && responseCode == 200) {
             id res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             if (res && [res isKindOfClass:[NSDictionary class]]) {
@@ -188,11 +183,11 @@
                 [self dataSourceDidLoad];
             } else {
                 [self dataSourceDidError];
-                //[MBHUDView hudWithBody:@"Error, Try again" type:MBAlertViewHUDTypeExclamationMark hidesAfter:2.0 show:YES];
+                [MBHUDView hudWithBody:@"Error, Try again" type:MBAlertViewHUDTypeExclamationMark hidesAfter:2.0 show:YES];
             }
         } else {
             [self dataSourceDidError];
-            //[MBHUDView hudWithBody:@"Error, Try again" type:MBAlertViewHUDTypeExclamationMark hidesAfter:2.0 show:YES];
+            [MBHUDView hudWithBody:@"Error, Try again" type:MBAlertViewHUDTypeExclamationMark hidesAfter:2.0 show:YES];
         }
     }];
 }
@@ -221,7 +216,7 @@
     if ([searchString length] < 3 || [searchString length] > 10 || [[searchString stringByTrimmingCharactersInSet:alphaSet] isEqualToString:@""] == NO) {
         return;
     }
-    //[MBHUDView hudWithBody:@"Getting images." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.0 show:YES];
+    [MBHUDView hudWithBody:@"Getting images." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:0.0 show:YES];
     if([self.view viewWithTag:104]) {
         [[self.view viewWithTag:104] removeFromSuperview];
     }

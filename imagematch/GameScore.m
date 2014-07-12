@@ -33,7 +33,7 @@
 
 - (void)loadGameScoreWithCompletionHandler:(void(^)(int64_t score, NSError *error))completionHandler {
    GKLeaderboard *lb = [[GKLeaderboard alloc] initWithPlayerIDs:@[[GKLocalPlayer localPlayer].playerID]];
-   lb.category = @"top_matcher";
+   lb.identifier = @"top_matcher";
    [lb loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
       if(error == nil && [scores count] == 1) {
          GKScore *gscore = [scores lastObject];
@@ -68,11 +68,11 @@
 }
 
 - (void)saveGameScore {
-   GKScore *scoreReporter = [[GKScore alloc] initWithCategory:@"top_matcher"];
+   GKScore *scoreReporter = [[GKScore alloc] initWithLeaderboardIdentifier:@"top_matcher"];
    scoreReporter.value = _score;
-   [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
-      //NSLog(@"SAVING GAMESCORE ERROR:%@ %lld %@", error, _score, scoreReporter);
-   }];
+    [GKScore reportScores:@[scoreReporter] withCompletionHandler:^(NSError *error) {
+    
+    }];
 }
 
 - (void)dealloc {
