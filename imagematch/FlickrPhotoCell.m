@@ -12,7 +12,7 @@
 
 - (void) setPhoto:(NSString *)photo {
     self.imgURL = photo;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"placeholder.png"] options:SDWebImageRetryFailed|SDWebImageProgressiveDownload];
 }
 
 - (NSString*) getPhotoURL {
