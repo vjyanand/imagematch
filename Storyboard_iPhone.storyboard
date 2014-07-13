@@ -75,6 +75,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="8BM-8W-FZg" kind="push" id="iPi-Fr-vCB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="104" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd1-V9-sl4">
                                 <rect key="frame" x="60" y="151" width="200" height="50"/>
@@ -302,6 +305,46 @@
                 </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="988" y="-16"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="WDH-4k-kwx">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8BM-8W-FZg" customClass="GalleryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkj-xg-O5E"/>
+                        <viewControllerLayoutGuide type="bottom" id="2yq-jh-oGI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i8R-va-Npn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="92" sectionHeaderHeight="2" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="R5P-g6-0NG">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8BM-8W-FZg" id="XbF-33-iDe"/>
+                                    <outlet property="delegate" destination="8BM-8W-FZg" id="s4B-dY-2JW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.11934804189999999" blue="0.33897013840000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="R5P-g6-0NG" secondAttribute="trailing" id="Ldv-1y-wsH"/>
+                            <constraint firstItem="2yq-jh-oGI" firstAttribute="top" secondItem="R5P-g6-0NG" secondAttribute="bottom" id="LgI-Zn-egg"/>
+                            <constraint firstItem="R5P-g6-0NG" firstAttribute="top" secondItem="qkj-xg-O5E" secondAttribute="bottom" id="f2Z-ul-1hw"/>
+                            <constraint firstItem="R5P-g6-0NG" firstAttribute="leading" secondItem="i8R-va-Npn" secondAttribute="leading" id="uOk-eu-pEf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0lr-CK-ar6"/>
+                    <connections>
+                        <outlet property="tableView" destination="R5P-g6-0NG" id="pNm-yJ-XhP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7h-Av-eQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="783"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b8L-Nh-Qub">

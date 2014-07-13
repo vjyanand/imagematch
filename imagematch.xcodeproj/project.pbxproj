@@ -34,6 +34,17 @@
 		4259B17119714F4C006BF9CA /* coin84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16D19714F4C006BF9CA /* coin84@2x.png */; };
 		4259B17219714F4C006BF9CA /* coin44.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16E19714F4C006BF9CA /* coin44.png */; };
 		4259B17319714F4C006BF9CA /* coin44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16F19714F4C006BF9CA /* coin44@2x.png */; };
+		4259B17519716817006BF9CA /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B17419716817006BF9CA /* loading.png */; };
+		4275515219722892004465D7 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515119722892004465D7 /* GalleryViewController.m */; };
+		4275516019722BB8004465D7 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515519722BB8004465D7 /* NSMutableArray+SWUtilityButtons.m */; };
+		4275516119722BB8004465D7 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515719722BB8004465D7 /* SWCellScrollView.m */; };
+		4275516219722BB8004465D7 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515919722BB8004465D7 /* SWLongPressGestureRecognizer.m */; };
+		4275516319722BB8004465D7 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515B19722BB8004465D7 /* SWTableViewCell.m */; };
+		4275516419722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515D19722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.m */; };
+		4275516519722BB8004465D7 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275515F19722BB8004465D7 /* SWUtilityButtonView.m */; };
+		4275516819722EC9004465D7 /* ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4275516619722EC9004465D7 /* ribbon.png */; };
+		4275516919722EC9004465D7 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4275516719722EC9004465D7 /* ribbon@2x.png */; };
+		4275516C197236AC004465D7 /* ChallengesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275516B197236AC004465D7 /* ChallengesViewController.m */; };
 		429F5B651964C48D0009DCBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B641964C48D0009DCBF /* Foundation.framework */; };
 		429F5B671964C48D0009DCBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B661964C48D0009DCBF /* CoreGraphics.framework */; };
 		429F5B691964C48D0009DCBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B681964C48D0009DCBF /* UIKit.framework */; };
@@ -42,6 +53,8 @@
 		429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 429F5B741964C48D0009DCBF /* AppDelegate.m */; };
 		429F5B7E1964C48D0009DCBF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429F5B7D1964C48D0009DCBF /* RootViewController.m */; };
 		429F5B801964C48D0009DCBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429F5B7F1964C48D0009DCBF /* Images.xcassets */; };
+		42A4A155197183E5001D4B6C /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A4A153197183E5001D4B6C /* list@2x.png */; };
+		42A4A156197183E5001D4B6C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A4A154197183E5001D4B6C /* list.png */; };
 		42B59FB8196830F50051439F /* cha-ching.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FB4196830F50051439F /* cha-ching.wav */; };
 		42B59FB9196830F50051439F /* beep-horn.aif in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FB5196830F50051439F /* beep-horn.aif */; };
 		42B59FBA196830F50051439F /* sndLetterButton.aif in Resources */ = {isa = PBXBuildFile; fileRef = 42B59FB6196830F50051439F /* sndLetterButton.aif */; };
@@ -120,6 +133,25 @@
 		4259B16D19714F4C006BF9CA /* coin84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin84@2x.png"; sourceTree = "<group>"; };
 		4259B16E19714F4C006BF9CA /* coin44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin44.png; sourceTree = "<group>"; };
 		4259B16F19714F4C006BF9CA /* coin44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin44@2x.png"; sourceTree = "<group>"; };
+		4259B17419716817006BF9CA /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		4275515019722892004465D7 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		4275515119722892004465D7 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		4275515419722BB8004465D7 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		4275515519722BB8004465D7 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		4275515619722BB8004465D7 /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		4275515719722BB8004465D7 /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		4275515819722BB8004465D7 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		4275515919722BB8004465D7 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		4275515A19722BB8004465D7 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		4275515B19722BB8004465D7 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		4275515C19722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		4275515D19722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		4275515E19722BB8004465D7 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		4275515F19722BB8004465D7 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		4275516619722EC9004465D7 /* ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ribbon.png; sourceTree = "<group>"; };
+		4275516719722EC9004465D7 /* ribbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbon@2x.png"; sourceTree = "<group>"; };
+		4275516A197236AC004465D7 /* ChallengesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesViewController.h; sourceTree = "<group>"; };
+		4275516B197236AC004465D7 /* ChallengesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesViewController.m; sourceTree = "<group>"; };
 		429F5B611964C48D0009DCBF /* imagematch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imagematch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429F5B641964C48D0009DCBF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		429F5B661964C48D0009DCBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,6 +166,8 @@
 		429F5B7D1964C48D0009DCBF /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		429F5B7F1964C48D0009DCBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		429F5B861964C48E0009DCBF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		42A4A153197183E5001D4B6C /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		42A4A154197183E5001D4B6C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		42B59FB4196830F50051439F /* cha-ching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "cha-ching.wav"; sourceTree = "<group>"; };
 		42B59FB5196830F50051439F /* beep-horn.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beep-horn.aif"; sourceTree = "<group>"; };
 		42B59FB6196830F50051439F /* sndLetterButton.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = sndLetterButton.aif; sourceTree = "<group>"; };
@@ -247,6 +281,25 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		4275515319722AEC004465D7 /* SwipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				4275515419722BB8004465D7 /* NSMutableArray+SWUtilityButtons.h */,
+				4275515519722BB8004465D7 /* NSMutableArray+SWUtilityButtons.m */,
+				4275515619722BB8004465D7 /* SWCellScrollView.h */,
+				4275515719722BB8004465D7 /* SWCellScrollView.m */,
+				4275515819722BB8004465D7 /* SWLongPressGestureRecognizer.h */,
+				4275515919722BB8004465D7 /* SWLongPressGestureRecognizer.m */,
+				4275515A19722BB8004465D7 /* SWTableViewCell.h */,
+				4275515B19722BB8004465D7 /* SWTableViewCell.m */,
+				4275515C19722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.h */,
+				4275515D19722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.m */,
+				4275515E19722BB8004465D7 /* SWUtilityButtonView.h */,
+				4275515F19722BB8004465D7 /* SWUtilityButtonView.m */,
+			);
+			name = SwipeCell;
+			sourceTree = "<group>";
+		};
 		429F5B581964C48D0009DCBF = {
 			isa = PBXGroup;
 			children = (
@@ -292,10 +345,14 @@
 				4204A2CA196FFD75000D94CB /* GameScore.m */,
 				42B5A0021968C4450051439F /* FlickrPhotoCell.h */,
 				42B5A0031968C4450051439F /* FlickrPhotoCell.m */,
+				4275516A197236AC004465D7 /* ChallengesViewController.h */,
+				4275516B197236AC004465D7 /* ChallengesViewController.m */,
 				42CB202B196E280B00DA552F /* MakeQuestionViewController.h */,
 				42CB202C196E280B00DA552F /* MakeQuestionViewController.m */,
 				4204A2C3196FFB22000D94CB /* SolveChallengeViewController.h */,
 				4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */,
+				4275515019722892004465D7 /* GalleryViewController.h */,
+				4275515119722892004465D7 /* GalleryViewController.m */,
 				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B7F1964C48D0009DCBF /* Images.xcassets */,
 				429F5B6B1964C48D0009DCBF /* Supporting Files */,
@@ -317,6 +374,7 @@
 		42B59FB2196830D70051439F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				4275515319722AEC004465D7 /* SwipeCell */,
 				4204A2CC19700317000D94CB /* AAShareBubbles */,
 				42CB2031196EB14200DA552F /* MBAlertView */,
 				4242FECC19695DF100245ABC /* SDWebImage */,
@@ -328,6 +386,8 @@
 		42B59FB3196830E50051439F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4275516619722EC9004465D7 /* ribbon.png */,
+				4275516719722EC9004465D7 /* ribbon@2x.png */,
 				4204A2D219700528000D94CB /* share52.png */,
 				4204A2D319700528000D94CB /* share52@2x.png */,
 				4259B16C19714F4C006BF9CA /* coin84.png */,
@@ -341,6 +401,9 @@
 				42B59FB5196830F50051439F /* beep-horn.aif */,
 				42B59FB6196830F50051439F /* sndLetterButton.aif */,
 				42B59FB7196830F50051439F /* sndUndo.aif */,
+				4259B17419716817006BF9CA /* loading.png */,
+				42A4A153197183E5001D4B6C /* list@2x.png */,
+				42A4A154197183E5001D4B6C /* list.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -492,6 +555,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4275516819722EC9004465D7 /* ribbon.png in Resources */,
+				4259B17519716817006BF9CA /* loading.png in Resources */,
 				42B59FBE1968311B0051439F /* subtle_stripes@2X.png in Resources */,
 				429F5B801964C48D0009DCBF /* Images.xcassets in Resources */,
 				4259B17019714F4C006BF9CA /* coin84.png in Resources */,
@@ -502,12 +567,15 @@
 				4204A2D019700320000D94CB /* AAShareBubbles.bundle in Resources */,
 				42B59FBF1968311B0051439F /* subtle_stripes.png in Resources */,
 				42B59FBB196830F50051439F /* sndUndo.aif in Resources */,
+				42A4A156197183E5001D4B6C /* list.png in Resources */,
 				42B59FFC19684BD70051439F /* FontAwesome.otf in Resources */,
 				429F5B6F1964C48D0009DCBF /* InfoPlist.strings in Resources */,
 				42B59FB8196830F50051439F /* cha-ching.wav in Resources */,
 				4259B17319714F4C006BF9CA /* coin44@2x.png in Resources */,
 				4204A2D519700528000D94CB /* share52@2x.png in Resources */,
+				42A4A155197183E5001D4B6C /* list@2x.png in Resources */,
 				4259B17219714F4C006BF9CA /* coin44.png in Resources */,
+				4275516919722EC9004465D7 /* ribbon@2x.png in Resources */,
 				42B59FBA196830F50051439F /* sndLetterButton.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +589,7 @@
 			files = (
 				42B59FC519683D480051439F /* UIColor+FlatUI.m in Sources */,
 				42CB2057196EB14200DA552F /* NSString+Trim.m in Sources */,
+				4275516519722BB8004465D7 /* SWUtilityButtonView.m in Sources */,
 				4242FEF519695DF100245ABC /* SDWebImageManager.m in Sources */,
 				4242FEF019695DF100245ABC /* SDImageCache.m in Sources */,
 				4242FEF419695DF100245ABC /* SDWebImageDownloaderOperation.m in Sources */,
@@ -531,13 +600,18 @@
 				42CB205E196EB14200DA552F /* UIView+Autolayout.m in Sources */,
 				4242FEEF19695DF100245ABC /* NSData+ImageContentType.m in Sources */,
 				4242FEF619695DF100245ABC /* SDWebImagePrefetcher.m in Sources */,
+				4275516119722BB8004465D7 /* SWCellScrollView.m in Sources */,
+				4275515219722892004465D7 /* GalleryViewController.m in Sources */,
 				4242FEF319695DF100245ABC /* SDWebImageDownloader.m in Sources */,
+				4275516019722BB8004465D7 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				429F5B7E1964C48D0009DCBF /* RootViewController.m in Sources */,
+				4275516C197236AC004465D7 /* ChallengesViewController.m in Sources */,
 				42CB2061196EB14200DA552F /* MBFlatAlertView.m in Sources */,
 				42CB205A196EB14200DA552F /* MBAlertView.m in Sources */,
 				4242FEFA19695DF100245ABC /* UIImage+WebP.m in Sources */,
 				42CB2064196EB14200DA552F /* MBSpinningCircle.m in Sources */,
 				4204A2CB196FFD75000D94CB /* GameScore.m in Sources */,
+				4275516419722BB8004465D7 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */,
 				42CB2062196EB14200DA552F /* MBCheckMarkView.m in Sources */,
 				4242FEF219695DF100245ABC /* SDWebImageDecoder.m in Sources */,
@@ -547,8 +621,10 @@
 				429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */,
 				4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */,
 				4242FEF119695DF100245ABC /* SDWebImageCompat.m in Sources */,
+				4275516319722BB8004465D7 /* SWTableViewCell.m in Sources */,
 				42CB2058196EB14200DA552F /* UIFont+Alert.m in Sources */,
 				42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */,
+				4275516219722BB8004465D7 /* SWLongPressGestureRecognizer.m in Sources */,
 				429F5B711964C48D0009DCBF /* main.m in Sources */,
 				42CB2065196EB14200DA552F /* MBAlertAbstract.m in Sources */,
 				42CB2059196EB14200DA552F /* UIView+Alert.m in Sources */,

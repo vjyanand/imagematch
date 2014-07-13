@@ -26,7 +26,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIImage *menuButtonImage = [UIImage imageNamed:@"list.png"];
+    UIButton *btnToggle = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnToggle setImage:menuButtonImage forState:UIControlStateNormal];
+    btnToggle.frame = CGRectMake(0, 0, menuButtonImage.size.width + 20, menuButtonImage.size.height);
+    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:btnToggle];
+    [btnToggle addTarget:self action:@selector(goToBack) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = menuBarButton;
     [_searchBar becomeFirstResponder];
+}
+
+-(void) goToBack {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -34,11 +46,6 @@
     if ((bottomEdge + 2.0) >= scrollView.contentSize.height && [self.items count] >= 98) {
         [self loadDataSource];
     }
-}
-
-- (void) createQuestion {
-//    MakeQuestionViewController *makeQuestionViewController = [[MakeQuestionViewController alloc] initWithTitle:_searchKey images:_imgURLs];
-  //  [self.navigationController pushViewController:makeQuestionViewController animated:YES];
 }
 
 #pragma mark - UICollectionView Datasource
