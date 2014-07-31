@@ -169,7 +169,6 @@
     [self reload];
 }
 
-
 -(void) showOptions:(UIGestureRecognizer*)sender {
     
     UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
@@ -369,8 +368,7 @@
 }
 
 -(void)aaShareBubblesDidHide:(AAShareBubbles *)shareBubbles {
-    [UIView animateWithDuration:0.4 animations:^{shareBubbles.superview.alpha = 0.0;} completion:^(BOOL finished){ [shareBubbles.superview removeFromSuperview];}];
-    
+  [shareBubbles.superview removeFromSuperview];
 }
 
 #pragma mark - Reload
@@ -728,7 +726,7 @@
     }
     
     UILabel *lblCscore = [[UILabel alloc] initWithFrame:CGRectMake(0, yPoint+=55, dialogLayer.bounds.size.width, 40)];
-    lblCscore.text = [NSString stringWithFormat:@"You Scored %ld Points", points];
+    lblCscore.text = [NSString stringWithFormat:@"You Scored %ld Points", (unsigned long)points];
     lblCscore.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20];
     lblCscore.textAlignment = NSTextAlignmentCenter;
     lblCscore.textColor = [UIColor whiteColor];
@@ -824,10 +822,9 @@
     _isVisible = YES;
 }
 
-
 -(void) thumbsHandle:(id)sender {
     UIButton *btnThumbs = (UIButton*) sender;
-    int count = btnThumbs.tag - 21;
+    NSUInteger count = btnThumbs.tag - 21;
     if(count == 1) {
         [btnThumbs setImage:[UIImage imageNamed:@"up_button_selected.png"] forState:UIControlStateNormal];
         [(UIButton*)[btnThumbs.superview viewWithTag:20] setImage:[UIImage imageNamed:@"down_button.png"] forState:UIControlStateNormal];
@@ -836,7 +833,7 @@
         [(UIButton*)[btnThumbs.superview viewWithTag:22] setImage:[UIImage imageNamed:@"up_button.png"] forState:UIControlStateNormal];
     }
     
-    NSString *URLPath = [NSString stringWithFormat:@"https://iavian.net/im/rate?s=%d&q=%d&u=%@", count, _qoID, [[self uniqueId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *URLPath = [NSString stringWithFormat:@"https://iavian.net/im/rate?s=%lu&q=%d&u=%@", (unsigned long)count, _qoID, [[self uniqueId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     NSURL *URL = [NSURL URLWithString:URLPath];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -859,6 +856,7 @@
         }
     }];
 }
+
 -(void) showShare:(UIGestureRecognizer*)sender {
     
     UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];

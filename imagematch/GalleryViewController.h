@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
+#import "SWTableViewCell.h"
 
-@interface GalleryViewController : UIViewController
+@interface GalleryViewController : UIViewController<SWTableViewCellDelegate, GKTurnBasedMatchmakerViewControllerDelegate>
 
 @end

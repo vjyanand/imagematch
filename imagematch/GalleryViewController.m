@@ -1,8 +1,12 @@
 #import "GalleryViewController.h"
 #import "SWTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "GalleryCellView.h"
+#import "AAShareBubbles.h"
+#import "ChallengesViewController.h"
+#import "MBHUDView.h"
 
-@interface GalleryViewController ()
+@interface GalleryViewController ()<AAShareBubblesDelegate>
 
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -26,11 +30,17 @@
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Challenges" style:UIBarButtonItemStylePlain target:self action:@selector(gotoChallenge)];
     
-    [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     
     self.navigationItem.rightBarButtonItem = rightButton;
     [self loadQuestion:nil];
+    
+}
 
+-(void) gotoChallenge {
+    ChallengesViewController *controller = [[ChallengesViewController alloc] init];
+    NSArray *vc = @[[self.navigationController.viewControllers objectAtIndex:0], controller];
+    [self.navigationController setViewControllers:vc animated:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -38,71 +48,77 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ContentCellIdentifier = @"ContentCell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ContentCellIdentifier];
-    UIImageView *imgView;
-    UILabel *lblLikes;
-    UILabel *mainLabel;
-    if (cell == nil) {
-        cell = [[SWTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ContentCellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIView *view =[[UIView alloc] init];
-        CGRect intFrame = CGRectInset(cell.contentView.bounds, 10, 5);
-        view.frame = CGRectMake(intFrame.origin.x, intFrame.origin.y, intFrame.size.width, 80);
-        view.backgroundColor = [UIColor whiteColor];
-        view.layer.cornerRadius = 2.0; // if you like rounded corners
-        view.layer.masksToBounds = NO;
-        view.layer.shadowOffset = CGSizeMake(0, 0);
-        view.layer.shadowRadius = 1;
-        view.layer.shadowOpacity = 1.0;
-        view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:2.0].CGPath;
-        
-        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 7, 70, 70)];
-        //imgView.layer.borderWidth = 0.5;
-        //imgView.layer.borderColor = [UIColor colorFromHexCode:@"#6C6C6C"].CGColor;
-        imgView.layer.masksToBounds = YES;
-        imgView.layer.cornerRadius = 4.0; // if you like rounded corners
-        imgView.tag = 11;
-        
-        mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 28.0, self.view.bounds.size.width - 150, 25.0)];
-        mainLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:16];
-        mainLabel.textAlignment = UITextAlignmentLeft;
-        mainLabel.textColor = [UIColor blackColor];
-        mainLabel.backgroundColor = [UIColor clearColor];
-        mainLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        mainLabel.tag = 10;
-        
-        
-        UIImageView *imglikeView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ribbon"]];
-        imglikeView.center = CGPointMake(view.frame.size.width - 30, 35);
-        lblLikes = [[UILabel alloc] initWithFrame:CGRectMake(8, 12, 25, 34)];
-        lblLikes.tag = 15;
-        lblLikes.backgroundColor = [UIColor greenColor];
-        lblLikes.textAlignment = NSTextAlignmentCenter;
-        lblLikes.adjustsFontSizeToFitWidth = YES;
-        lblLikes.backgroundColor = [UIColor clearColor];
-        lblLikes.textColor = [UIColor greenColor];
-        lblLikes.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:14];
-        
-        [view addSubview:imglikeView];
-        [imglikeView addSubview:lblLikes];
-        [view addSubview:imgView];
-        [view addSubview:mainLabel];
-        [cell.contentView addSubview:view];
-        [cell setDelegate:self];
-        
-    } else {
-        imgView = (id)[cell viewWithTag:11];
-        mainLabel = (id) [cell viewWithTag:10];
-        lblLikes = (id) [cell viewWithTag:15];
-    }
+    GalleryCellView *cell = [tableView dequeueReusableCellWithIdentifier:@"gallcell"];
     
     NSDictionary *item = [_items objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://iavian.com/render.php?i=%@&s=340",[item objectForKey:@"id"]]];
-    [imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"loading"] options:SDWebImageRetryFailed];
-    mainLabel.text = [item objectForKey:@"t"];
-    lblLikes.text = [item objectForKey:@"rp"];
+    [cell.imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"loading"] options:SDWebImageRetryFailed];
+    cell.mainLabel.text = [item objectForKey:@"t"];
+    cell.lblLikes.text = [item objectForKey:@"rp"];
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
     return cell;
+}
+
+-(void)aaShareBubblesDidHide:(AAShareBubbles *)shareBubbles {
+    [shareBubbles.superview removeFromSuperview];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIWindow* mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    UIView *modalView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    [mainWindow addSubview:modalView];
+    
+    AAShareBubbles *shareBubbles = [[AAShareBubbles alloc] initWithPoint:self.view.center
+                                                                  radius:100
+                                                                  inView:modalView];
+    shareBubbles.delegate = self;
+    shareBubbles.bubbleRadius = 40; // Default is 40
+    shareBubbles.showFacebookBubble = YES;
+    shareBubbles.showTwitterBubble = YES;
+    shareBubbles.showMailBubble = YES;
+    [shareBubbles show];
+    
+}
+
+- (NSArray *)rightButtons {
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.18f green:0.18f blue:0.85f alpha:.8] title:@"Challenge"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:.9f]
+                                                title:@"Remove"];
+    
+    return rightUtilityButtons;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    if (index == 0 && [cell.rightUtilityButtons count] == 2) {
+        GKMatchRequest *request = [[GKMatchRequest alloc] init];
+        request.minPlayers = 2;
+        request.maxPlayers = 10;
+        GKTurnBasedMatchmakerViewController *mmvc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+        mmvc.turnBasedMatchmakerDelegate = self;
+        mmvc.showExistingMatches = NO;
+        _indexPath = indexPath;
+        [self presentViewController:mmvc animated:YES completion:nil];
+        [cell hideUtilityButtonsAnimated:YES];
+    } else {
+        NSString *URLPath = [NSString stringWithFormat:@"https://iavian.net/im/getquestion?d=1&u=%@&q=%d", [[self uniqueId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [[[_items objectAtIndex:indexPath.row] objectForKey:@"id"] intValue]];
+        [_items removeObjectAtIndex:indexPath.row];
+        
+        NSURL *URL = [NSURL URLWithString:URLPath];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
 }
 
 -(NSString *) uniqueId {
@@ -144,15 +160,35 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
+    
 }
-*/
+
+- (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
+    
+}
+
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:[_items objectAtIndex:_indexPath.row] options:0 error:nil];
+        GKTurnBasedParticipant *nextPlayer;
+        if (match.currentParticipant == [match.participants objectAtIndex:0]) {
+            nextPlayer = [[match participants] lastObject];
+        } else {
+            nextPlayer = [[match participants] objectAtIndex:0];
+        }
+        match.message = [NSString stringWithFormat:@"New challenge:%@ from %@", [[_items objectAtIndex:_indexPath.row] objectForKey:@"s"], [GKLocalPlayer localPlayer].alias];
+        
+        [match endTurnWithNextParticipants:@[nextPlayer] turnTimeout:360 matchData:postData completionHandler:^(NSError *error) {
+            if(error == nil) {
+                [MBHUDView hudWithBody:@"Challege created" type:MBAlertViewHUDTypeCheckmark hidesAfter:1.0 show:YES];
+            }
+        }];
+    }];
+}
 
 @end

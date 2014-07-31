@@ -30,6 +30,7 @@
 		4242FEFB19695DF100245ABC /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEE919695DF100245ABC /* UIImageView+HighlightedWebCache.m */; };
 		4242FEFC19695DF100245ABC /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEEB19695DF100245ABC /* UIImageView+WebCache.m */; };
 		4242FEFD19695DF100245ABC /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4242FEED19695DF100245ABC /* UIView+WebCacheOperation.m */; };
+		425502201972BBD200AFC474 /* GalleryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4255021F1972BBD200AFC474 /* GalleryCellView.m */; };
 		4259B17019714F4C006BF9CA /* coin84.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16C19714F4C006BF9CA /* coin84.png */; };
 		4259B17119714F4C006BF9CA /* coin84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16D19714F4C006BF9CA /* coin84@2x.png */; };
 		4259B17219714F4C006BF9CA /* coin44.png in Resources */ = {isa = PBXBuildFile; fileRef = 4259B16E19714F4C006BF9CA /* coin44.png */; };
@@ -45,6 +46,7 @@
 		4275516819722EC9004465D7 /* ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4275516619722EC9004465D7 /* ribbon.png */; };
 		4275516919722EC9004465D7 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4275516719722EC9004465D7 /* ribbon@2x.png */; };
 		4275516C197236AC004465D7 /* ChallengesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4275516B197236AC004465D7 /* ChallengesViewController.m */; };
+		4288E8831983F06400DE5E9E /* ChallengeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288E8821983F06400DE5E9E /* ChallengeCellView.m */; };
 		429F5B651964C48D0009DCBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B641964C48D0009DCBF /* Foundation.framework */; };
 		429F5B671964C48D0009DCBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B661964C48D0009DCBF /* CoreGraphics.framework */; };
 		429F5B691964C48D0009DCBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429F5B681964C48D0009DCBF /* UIKit.framework */; };
@@ -129,6 +131,8 @@
 		4242FEEB19695DF100245ABC /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		4242FEEC19695DF100245ABC /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		4242FEED19695DF100245ABC /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		4255021E1972BBD200AFC474 /* GalleryCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCellView.h; sourceTree = "<group>"; };
+		4255021F1972BBD200AFC474 /* GalleryCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCellView.m; sourceTree = "<group>"; };
 		4259B16C19714F4C006BF9CA /* coin84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin84.png; sourceTree = "<group>"; };
 		4259B16D19714F4C006BF9CA /* coin84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin84@2x.png"; sourceTree = "<group>"; };
 		4259B16E19714F4C006BF9CA /* coin44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin44.png; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		4275516719722EC9004465D7 /* ribbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbon@2x.png"; sourceTree = "<group>"; };
 		4275516A197236AC004465D7 /* ChallengesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesViewController.h; sourceTree = "<group>"; };
 		4275516B197236AC004465D7 /* ChallengesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesViewController.m; sourceTree = "<group>"; };
+		4288E8811983F06400DE5E9E /* ChallengeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeCellView.h; sourceTree = "<group>"; };
+		4288E8821983F06400DE5E9E /* ChallengeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeCellView.m; sourceTree = "<group>"; };
 		429F5B611964C48D0009DCBF /* imagematch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imagematch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429F5B641964C48D0009DCBF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		429F5B661964C48D0009DCBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -239,6 +245,13 @@
 				4204A2CF19700320000D94CB /* AAShareBubbles.m */,
 			);
 			name = AAShareBubbles;
+			sourceTree = "<group>";
+		};
+		422284251973F409006DCD7A /* HUDView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HUDView;
 			sourceTree = "<group>";
 		};
 		4242FECC19695DF100245ABC /* SDWebImage */ = {
@@ -353,6 +366,10 @@
 				4204A2C4196FFB22000D94CB /* SolveChallengeViewController.m */,
 				4275515019722892004465D7 /* GalleryViewController.h */,
 				4275515119722892004465D7 /* GalleryViewController.m */,
+				4255021E1972BBD200AFC474 /* GalleryCellView.h */,
+				4288E8811983F06400DE5E9E /* ChallengeCellView.h */,
+				4288E8821983F06400DE5E9E /* ChallengeCellView.m */,
+				4255021F1972BBD200AFC474 /* GalleryCellView.m */,
 				42B59FFD19684E3D0051439F /* Storyboard_iPhone.storyboard */,
 				429F5B7F1964C48D0009DCBF /* Images.xcassets */,
 				429F5B6B1964C48D0009DCBF /* Supporting Files */,
@@ -374,6 +391,7 @@
 		42B59FB2196830D70051439F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				422284251973F409006DCD7A /* HUDView */,
 				4275515319722AEC004465D7 /* SwipeCell */,
 				4204A2CC19700317000D94CB /* AAShareBubbles */,
 				42CB2031196EB14200DA552F /* MBAlertView */,
@@ -617,6 +635,7 @@
 				4242FEF219695DF100245ABC /* SDWebImageDecoder.m in Sources */,
 				42CB205B196EB14200DA552F /* MBAlertViewButton.m in Sources */,
 				42CB205F196EB14200DA552F /* MBFlatAlertAbstract.m in Sources */,
+				425502201972BBD200AFC474 /* GalleryCellView.m in Sources */,
 				42CB2063196EB14200DA552F /* MBHUDView.m in Sources */,
 				429F5B751964C48D0009DCBF /* AppDelegate.m in Sources */,
 				4242FEEE19695DF100245ABC /* MKAnnotationView+WebCache.m in Sources */,
@@ -626,6 +645,7 @@
 				42CB202D196E280B00DA552F /* MakeQuestionViewController.m in Sources */,
 				4275516219722BB8004465D7 /* SWLongPressGestureRecognizer.m in Sources */,
 				429F5B711964C48D0009DCBF /* main.m in Sources */,
+				4288E8831983F06400DE5E9E /* ChallengeCellView.m in Sources */,
 				42CB2065196EB14200DA552F /* MBAlertAbstract.m in Sources */,
 				42CB2059196EB14200DA552F /* UIView+Alert.m in Sources */,
 				42B5A0011968BC1F0051439F /* ImgSearchViewController.m in Sources */,

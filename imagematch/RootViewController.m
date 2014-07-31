@@ -3,7 +3,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIColor+FlatUI.h"
 #import "MBHUDView.h"
-#import "MakeQuestionViewController.h"
+#import "GalleryViewController.h"
 #import "GameScore.h"
 
 @interface RootViewController ()
@@ -60,6 +60,9 @@
         @"http://i.istockimg.com/file_thumbview_approve/19987310/3/stock-photo-19987310-apple-orange.jpg",
         @"http://i.istockimg.com/file_thumbview_approve/19445504/3/stock-photo-19445504-sliced-red-apple-and-leaf.jpg"]];
         [self.navigationController pushViewController:vc animated:NO];*/
+        //GalleryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gallv"];
+        //[self.navigationController pushViewController:vc animated:NO];
+        
     }];
     
     _volLabel.font = [UIFont fontWithName:@"FontAwesome" size:30];
