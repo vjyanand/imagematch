@@ -48,43 +48,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"RELO");
     ChallengeCellView *cell = [tableView dequeueReusableCellWithIdentifier:@"challenge"];
     cell.delegate = self;
-    
-    /*if (!cell) {
-     cell = [[ChallengeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-     UILabel *userLabel = [[UILabel alloc] initWithFrame:CGRectMake(84, 18, self.view.bounds.size.width - 95, 15.0)];
-     userLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:17];
-     userLabel.textColor = [UIColor blackColor];
-     userLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-     userLabel.tag = 10;
-     [cell.contentView addSubview:userLabel];
-     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 70, 70)];
-     imgView.tag = 11;
-     [cell.contentView addSubview:imgView];
-     
-     CGFloat reminaingSpace = (self.view.bounds.size.width - 95) / 2 ;
-     
-     UILabel *statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(84, 41, reminaingSpace, 40)];
-     statusLabel.tag = 13;
-     statusLabel.font = [UIFont fontWithName:@"Futura" size:16];
-     [cell.contentView addSubview:statusLabel];
-     
-     timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(statusLabel.frame.origin.x + reminaingSpace, 41, reminaingSpace, 40)];
-     timeLabel.tag = 12;
-     timeLabel.textAlignment = UITextAlignmentRight;
-     timeLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
-     [cell.contentView addSubview:timeLabel];
-     cell.contentView.backgroundColor = [UIColor whiteColor];
-     } else {
-     timeLabel = (id) [cell viewWithTag:12];
-     UIImageView *imgView = (id)[cell viewWithTag:11];
-     [imgView setImage:nil];
-     }
-     */
-    
     
     GKTurnBasedParticipant *part;
     GKTurnBasedMatch *match;
@@ -101,7 +66,7 @@
         part = [match.participants objectAtIndex:1];
     }
     
-    NSLog(@"%@", match);
+    NSLog(@"%@", part);
     
     [match loadMatchDataWithCompletionHandler:^(NSData *matchData, NSError *error) {
         if (error == nil) {
@@ -116,10 +81,10 @@
     if(part !=nil && part.playerID !=nil) {
         [GKPlayer loadPlayersForIdentifiers:@[part.playerID] withCompletionHandler:^(NSArray *players, NSError *error) {
             
-            NSLog(@"AAAA");
+            NSLog(@"AAAA1");
             
             if(error == nil && players.count == 1) {
-                NSLog(@"AAAA");
+                NSLog(@"AAAA2");
                 
                 GKPlayer *player = [players lastObject];
                 [cell.userLabel setText:player.alias];
@@ -187,15 +152,6 @@
             
             for (GKTurnBasedMatch *match in matches) {
                 if (match) {
-                    
-                    /*[match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
-                     [match removeWithCompletionHandler:^(NSError *error) {
-                     NSLog(@"%@", error);
-                     
-                     }];
-                     }]; */
-                    
-                    //NSLog(@"%@ \n>>>\n", match);
                     if (match.status == GKTurnBasedMatchStatusMatching) {
                         NSMutableArray *tArray = [_myMatches objectForKey:@"fm"];
                         [tArray addObject:match];
@@ -208,17 +164,10 @@
                                 } else {
                                     nextPlayer = [[match participants] objectAtIndex:0];
                                 }
-                                if (nextPlayer.matchOutcome == GKTurnBasedMatchOutcomeQuit) {
-                                    match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeQuit;
-                                    [match endMatchInTurnWithMatchData:match.matchData completionHandler:^(NSError *error) {
-                                        [match removeWithCompletionHandler:^(NSError *error) {
-                                            
-                                        }];
-                                    }];
-                                } else {
-                                    NSMutableArray *tArray = [_myMatches objectForKey:@"tm"];
-                                    [tArray addObject:match];
-                                }
+                                
+                                NSMutableArray *tArray = [_myMatches objectForKey:@"tm"];
+                                [tArray addObject:match];
+                                
                             } else if ( match.currentParticipant.matchOutcome == GKTurnBasedMatchOutcomeLost || match.currentParticipant.matchOutcome == GKTurnBasedMatchOutcomeTied) {
                                 NSMutableArray *tArray = [_myMatches objectForKey:@"fm"];
                                 [tArray addObject:match];

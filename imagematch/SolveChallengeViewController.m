@@ -560,10 +560,10 @@
                 self.question.qOwner = [res objectForKey:@"u"];
                 [self doDelayedAction:1];
             } else {
-             //   [self doDelayedAction:2];
+                [self doDelayedAction:2];
             }
         } else {
-           // [self doDelayedAction:3];
+            [self doDelayedAction:3];
         }
     }];
 }

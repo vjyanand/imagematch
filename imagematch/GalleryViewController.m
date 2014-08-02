@@ -16,7 +16,6 @@
 
 @implementation GalleryViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,7 +37,8 @@
 }
 
 -(void) gotoChallenge {
-    ChallengesViewController *controller = [[ChallengesViewController alloc] init];
+    ChallengesViewController *controller = [[UIStoryboard storyboardWithName:@"Storyboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"challenge"];
+    
     NSArray *vc = @[[self.navigationController.viewControllers objectAtIndex:0], controller];
     [self.navigationController setViewControllers:vc animated:NO];
 }
